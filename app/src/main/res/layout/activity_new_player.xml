@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".player_records.NewPlayerActivity">
+
+    <include
+        android:id="@+id/toolbar_main"
+        layout="@layout/toolbar_main"/>
+
+    <TextView
+        android:id="@+id/new_player_CREATE_PLAYER_TITLE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_main"
+        android:text="@string/new_player_CREATE_PLAYER_TITLE"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/new_player_PLAYER_NAME_TEXTVIEW"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/new_player_CREATE_PLAYER_TITLE"
+        android:layout_marginTop="20dp"
+        android:text="@string/new_player_PLAYER_NAME_TEXTVIEW"
+        />
+
+    <EditText
+        android:id="@+id/new_player_PLAYER_NAME_EDITTEXT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/new_player_NAME_HINT"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@id/new_player_PLAYER_NAME_TEXTVIEW"
+        app:layout_constraintTop_toBottomOf="@id/new_player_PLAYER_NAME_TEXTVIEW" />
+
+    <Button
+        android:id="@+id/new_player_ADD_PLAYER_BUTTON"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:text="@string/new_player_ADD_PLAYER_BUTTON"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_player_PLAYER_NAME_EDITTEXT" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

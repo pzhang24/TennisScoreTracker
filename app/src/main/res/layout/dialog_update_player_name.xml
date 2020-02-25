@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/dialog_update_player_name_CHANGE_NAME_TEXTVIEW"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="@string/dialog_update_player_name_CHANGE_NAME_TEXTVIEW"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:padding="10dp"
+
+        />
+
+    <EditText
+        android:id="@+id/dialog_update_player_name_NEW_NAME_EDITTEXT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:padding="12dp"
+        android:layout_margin="20dp"
+        android:autofillHints="@string/dialog_update_player_name_HINT"
+        android:hint="@string/dialog_update_player_name_HINT"
+        android:inputType="text" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        style="?android:buttonBarButtonStyle">
+
+
+        <Button
+            android:id="@+id/dialog_update_player_name_CANCEL_BUTTON"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_update_player_name_CANCEL_BUTTON"
+            style="?android:buttonBarStyle"
+            />
+
+        <Button
+            android:id="@+id/dialog_update_player_name_UPDATE_BUTTON"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_update_player_name_UPDATE_BUTTON"
+            style="?android:buttonBarStyle"/>
+    </LinearLayout>
+</LinearLayout>

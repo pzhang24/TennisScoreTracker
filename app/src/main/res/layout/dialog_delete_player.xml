@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/dialog_delete_player_DELETE_TEXTVIEW"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="@string/dialog_delete_player_DELETE_TEXTVIEW"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:padding="10dp"
+
+        />
+
+    <TextView
+        android:id="@+id/dialog_delete_player_WARNING_TEXTVIEW"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="@string/dialog_delete_player_WARNING_TEXTVIEW"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:padding="10dp"
+
+        />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        style="?android:buttonBarButtonStyle">
+
+
+        <Button
+            android:id="@+id/dialog_delete_player_CANCEL_BUTTON"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_delete_player_CANCEL_BUTTON"
+            style="?android:buttonBarStyle"
+            />
+
+        <Button
+            android:id="@+id/dialog_delete_player_DELETE_BUTTON"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_delete_player_DELETE_BUTTON"
+            style="?android:buttonBarStyle"/>
+    </LinearLayout>
+</LinearLayout>
