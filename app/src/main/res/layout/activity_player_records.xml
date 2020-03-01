@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/aleksandar_kyng_tenniscourtphoto"
     tools:context=".player_records.PlayerRecordsActivity">
 
     <include
@@ -14,14 +15,24 @@
         android:id="@+id/player_records_button_NEW_PLAYER"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="135dp"
+        android:layout_marginLeft="135dp"
+        android:layout_marginEnd="135dp"
+        android:layout_marginRight="135dp"
+        android:layout_marginTop="50dp"
         android:text="@string/player_records_button_NEW_PLAYER"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar_main" />
 
     <ListView
         android:id="@+id/player_list_LISTVIEW"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:divider="#000000"
+        android:dividerHeight="2dp"
+        android:background="@drawable/activity_player_records_listview_border"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/player_records_button_NEW_PLAYER"/>
 

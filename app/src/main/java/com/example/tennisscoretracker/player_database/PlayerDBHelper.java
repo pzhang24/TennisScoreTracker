@@ -42,7 +42,7 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
 
     private static final int DB_INSERT_ERROR = -1;
 
-    private static final int MAX_PLAYER_CAPACITY = 3;
+    private static final int MAX_PLAYER_CAPACITY = 100;
 
     /**
      * Private constructor - used in getInstance() method
@@ -97,7 +97,7 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
      * @return true if player was successfully inserted into database, and false otherwise.
      * Throws PlayerNameAlreadyExistsException if player name is already taken (ie in the database).
      * Throws TooManyPlayersException if the current number of players in the database
-     *  is equal to MAX_PLAYER_CAPACITY.
+     *  is equal to (or exceeds) MAX_PLAYER_CAPACITY.
      */
     public boolean insertNewPlayer(String playerName)
             throws PlayerNameAlreadyExistsException, TooManyPlayersException {

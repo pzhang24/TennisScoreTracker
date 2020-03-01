@@ -14,15 +14,27 @@
         android:id="@+id/player_profile_PLAYER_PROFILE_HEADING_TEXTVIEW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginRight="88dp"
         android:text="@string/player_profile_PLAYER_PROFILE_HEADING_TEXTVIEW"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_main"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_main" />
 
     <TextView
         android:id="@+id/player_profile_PLAYER_NAME_HEADING_TEXTVIEW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:text="@string/player_profile_PLAYER_NAME_HEADING_TEXTVIEW"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_PROFILE_HEADING_TEXTVIEW"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -31,55 +43,72 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/player_profile_PLAYER_NAME_DISPLAY_TEXTVIEW"
+        android:textSize="24sp"
         app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_NAME_HEADING_TEXTVIEW"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@id/player_profile_PLAYER_NAME_HEADING_TEXTVIEW" />
 
     <TextView
         android:id="@+id/player_profile_PLAYER_WINS_HEADING_TEXTVIEW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/player_profile_PLAYER_WINS_HEADING_TEXTVIEW"
-        app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_NAME_DISPLAY_TEXTVIEW"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/player_profile_CHANGE_PLAYER_NAME_BUTTON"
+        app:layout_constraintStart_toStartOf="@id/player_profile_PLAYER_NAME_HEADING_TEXTVIEW" />
 
     <TextView
         android:id="@+id/player_profile_PLAYER_WINS_DISPLAY_TEXTVIEW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/player_profile_PLAYER_WINS_DISPLAY_TEXTVIEW"
+        android:textSize="24sp"
         app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_WINS_HEADING_TEXTVIEW"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@id/player_profile_PLAYER_NAME_HEADING_TEXTVIEW" />
 
     <TextView
         android:id="@+id/player_profile_PLAYER_LOSSES_HEADING_TEXTVIEW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/player_profile_PLAYER_LOSSES_HEADING_TEXTVIEW"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_WINS_DISPLAY_TEXTVIEW"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@id/player_profile_PLAYER_NAME_HEADING_TEXTVIEW" />
 
     <TextView
         android:id="@+id/player_profile_PLAYER_LOSSES_DISPLAY_TEXTVIEW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/player_profile_PLAYER_LOSSES_DISPLAY_TEXTVIEW"
+        android:textSize="24sp"
         app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_LOSSES_HEADING_TEXTVIEW"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@id/player_profile_PLAYER_NAME_HEADING_TEXTVIEW" />
 
     <Button
         android:id="@+id/player_profile_CHANGE_PLAYER_NAME_BUTTON"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/player_profile_CHANGE_PLAYER_NAME_BUTTON"
-        app:layout_constraintTop_toTopOf="@id/player_profile_PLAYER_NAME_HEADING_TEXTVIEW"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/player_profile_PLAYER_NAME_DISPLAY_TEXTVIEW"
+        app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_NAME_DISPLAY_TEXTVIEW" />
 
     <Button
         android:id="@+id/player_profile_DELETE_PLAYER_BUTTON"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="20dp"
         android:text="@string/player_profile_DELETE_PLAYER_BUTTON"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_LOSSES_DISPLAY_TEXTVIEW"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
 
