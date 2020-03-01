@@ -30,19 +30,19 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "player.db";
     private static final String TABLE_NAME = "player";
-    private static final String COL_1 = "playerID";
-    private static final String COL_2 = "playerName";
-    private static final String COL_3 = "wins";
-    private static final String COL_4 = "losses";
+    private static final String COL_0 = "playerID";
+    private static final String COL_1 = "playerName";
+    private static final String COL_2 = "wins";
+    private static final String COL_3 = "losses";
 
-    private static final int PLAYER_ID_COLUMN = 1;
-    private static final int PLAYER_NAME_COLUMN = 2;
-    private static final int PLAYER_WINS_COLUMN = 3;
-    private static final int PLAYER_LOSSES_COLUMN = 4;
+    private static final int PLAYER_ID_COLUMN = 0;
+    private static final int PLAYER_NAME_COLUMN = 1;
+    private static final int PLAYER_WINS_COLUMN = 2;
+    private static final int PLAYER_LOSSES_COLUMN = 3;
 
     private static final int DB_INSERT_ERROR = -1;
 
-    private static final int MAX_PLAYER_CAPACITY = 30;
+    private static final int MAX_PLAYER_CAPACITY = 3;
 
     /**
      * Private constructor - used in getInstance() method
@@ -84,10 +84,20 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
     }
 
     /**
+     * Returns the maximum number of players that can be stored in this database.
+     * @return the maximum number of players that can be stored in this database.
+     */
+    public int getDatabaseCapacity() {
+        return MAX_PLAYER_CAPACITY;
+    }
+
+    /**
      * Creates a new player in the database.
      * @param playerName name of new player to include.
      * @return true if player was successfully inserted into database, and false otherwise.
      * Throws PlayerNameAlreadyExistsException if player name is already taken (ie in the database).
+     * Throws TooManyPlayersException if the current number of players in the database
+     *  is equal to MAX_PLAYER_CAPACITY.
      */
     public boolean insertNewPlayer(String playerName)
             throws PlayerNameAlreadyExistsException, TooManyPlayersException {
@@ -103,11 +113,11 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
 
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_2, playerName);
+        contentValues.put(COL_1, playerName);
 
         //New players initially have zero wins and losses
+        contentValues.put(COL_2, 0);
         contentValues.put(COL_3, 0);
-        contentValues.put(COL_4, 0);
 
         long insertResult = db.insert(TABLE_NAME, null, contentValues);
 
@@ -118,7 +128,7 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
      * Gets all data for all players in the database at the time the method is called.
      * @return an instance of Cursor containing all player data.
      */
-    public Cursor getAllPlayerData() {
+    private Cursor getAllPlayerData() {
         SQLiteDatabase db = dbStaticInstance.getWritableDatabase();
         return db.rawQuery("select * from " + TABLE_NAME, null);
     }
@@ -199,8 +209,8 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
             throw new PlayerNameAlreadyExistsException("Player name already exists!");
         }
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_2, newPlayerName);
-        int isSuccess = db.update(TABLE_NAME, contentValues, COL_1 + " =? ",
+        contentValues.put(COL_1, newPlayerName);
+        int isSuccess = db.update(TABLE_NAME, contentValues, COL_0 + " =? ",
                 new String[] {String.valueOf(playerID)});
 
         //Checks whether any rows were updated or not (By design only one row should be updated --
@@ -208,8 +218,8 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
         return isSuccess > 0;
 
         /* SQLQuery we want to execute
-        String query = "UPDATE " +  TABLE_NAME + " SET " + COL_2 + " = " + newName +
-                 " WHERE " + COL_1 + " = " + playerID;
+        String query = "UPDATE " +  TABLE_NAME + " SET " + COL_1 + " = " + newName +
+                 " WHERE " + COL_0 + " = " + playerID;
         */
     }
 
@@ -222,7 +232,7 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
      */
     public boolean deletePlayer(int playerID) {
         SQLiteDatabase db = dbStaticInstance.getWritableDatabase();
-        int isSuccess = db.delete(TABLE_NAME, "ID = ?",
+        int isSuccess = db.delete(TABLE_NAME, "playerID = ?",
                 new String[] {String.valueOf(playerID)});
 
         //Checks whether any rows were deleted or not (By design only one row should be updated --
@@ -247,11 +257,11 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
      */
     private boolean checkPlayerNameAlreadyExist(String playerName) {
         SQLiteDatabase db = dbStaticInstance.getWritableDatabase();
-        String query = "SELECT " + COL_2 + " FROM " + TABLE_NAME + " WHERE " + COL_2 + "=?";
+        String query = "SELECT " + COL_1 + " FROM " + TABLE_NAME + " WHERE " + COL_1 + "=?";
         Cursor cursor = db.rawQuery(query, new String[]{playerName});
         int count = cursor.getCount();
         cursor.close();
-        return count <= 0;
+        return count > 0;
     }
 
     //Inexpensive Getter methods
@@ -265,7 +275,7 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
      */
     public int getIDFromName(String playerName) throws PlayerDoesNotExistException {
         SQLiteDatabase db = dbStaticInstance.getWritableDatabase();
-        Cursor cursor = executeSimpleSelectQuery(db, TABLE_NAME, COL_1, COL_2, playerName);
+        Cursor cursor = executeSimpleSelectQuery(db, TABLE_NAME, COL_0, COL_1, playerName);
 
         int count = cursor.getCount();
         if(count <= 0) {
@@ -290,7 +300,7 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
     public String getNameFromID(int playerID) throws PlayerDoesNotExistException {
         SQLiteDatabase db = dbStaticInstance.getWritableDatabase();
         Cursor cursor = executeSimpleSelectQuery(db, TABLE_NAME,
-                COL_2, COL_1, String.valueOf(playerID));
+                COL_1, COL_0, String.valueOf(playerID));
 
         int count = cursor.getCount();
         if(count <= 0) {
@@ -314,7 +324,7 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
     public int getWinsFromID(int playerID) throws PlayerDoesNotExistException {
         SQLiteDatabase db = dbStaticInstance.getWritableDatabase();
         Cursor cursor = executeSimpleSelectQuery(db, TABLE_NAME,
-                COL_3, COL_1, String.valueOf(playerID));
+                COL_2, COL_0, String.valueOf(playerID));
 
         int count = cursor.getCount();
         if(count <= 0) {
@@ -339,7 +349,7 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
     public int getLossesFromID(int playerID) throws PlayerDoesNotExistException {
         SQLiteDatabase db = dbStaticInstance.getWritableDatabase();
         Cursor cursor = executeSimpleSelectQuery(db, TABLE_NAME,
-                COL_4, COL_1, String.valueOf(playerID));
+                COL_3, COL_0, String.valueOf(playerID));
 
         int count = cursor.getCount();
         if(count <= 0) {

@@ -74,14 +74,14 @@ public class PlayerProfileActivity extends AppCompatActivity {
                 View view = getLayoutInflater().inflate(
                         R.layout.dialog_update_player_name, null);
 
-                final EditText newName = findViewById(R.id.dialog_update_player_name_NEW_NAME_EDITTEXT);
-
-                Button cancelButton = findViewById(R.id.dialog_update_player_name_CANCEL_BUTTON);
-                Button updateButton = findViewById(R.id.dialog_update_player_name_UPDATE_BUTTON);
+                final EditText newName = view.findViewById(R.id.dialog_update_player_name_NEW_NAME_EDITTEXT);
 
                 builder.setView(view);
                 final AlertDialog dialog = builder.create();
                 dialog.show();
+
+                Button cancelButton = view.findViewById(R.id.dialog_update_player_name_CANCEL_BUTTON);
+                Button updateButton = view.findViewById(R.id.dialog_update_player_name_UPDATE_BUTTON);
 
                 cancelButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -127,12 +127,14 @@ public class PlayerProfileActivity extends AppCompatActivity {
                 View view = getLayoutInflater().inflate(
                         R.layout.dialog_delete_player, null);
 
-                Button cancelButton = findViewById(R.id.dialog_delete_player_CANCEL_BUTTON);
-                Button deleteButton = findViewById(R.id.dialog_delete_player_DELETE_BUTTON);
+
 
                 builder.setView(view);
                 final AlertDialog dialog = builder.create();
                 dialog.show();
+
+                Button cancelButton = view.findViewById(R.id.dialog_delete_player_CANCEL_BUTTON);
+                Button deleteButton = view.findViewById(R.id.dialog_delete_player_DELETE_BUTTON);
 
                 cancelButton.setOnClickListener(new View.OnClickListener() {
                     @Override

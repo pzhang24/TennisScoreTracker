@@ -93,7 +93,7 @@ public class NewPlayerActivity extends AppCompatActivity {
 
                 //clear text in playerName editText widget
                 //must be done even if editText box is all whitespace (must clear out whitespace!)
-                editPlayerName.getText().clear();
+                editPlayerName.setText("");
             }
         });
     }
