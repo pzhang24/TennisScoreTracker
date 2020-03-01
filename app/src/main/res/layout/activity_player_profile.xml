@@ -55,7 +55,7 @@
         android:text="@string/player_profile_PLAYER_WINS_HEADING_TEXTVIEW"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/player_profile_CHANGE_PLAYER_NAME_BUTTON"
+        app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_NAME_DISPLAY_TEXTVIEW"
         app:layout_constraintStart_toStartOf="@id/player_profile_PLAYER_NAME_HEADING_TEXTVIEW" />
 
     <TextView
@@ -93,8 +93,10 @@
         android:layout_height="wrap_content"
         android:text="@string/player_profile_CHANGE_PLAYER_NAME_BUTTON"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@id/player_profile_PLAYER_NAME_DISPLAY_TEXTVIEW"
-        app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_NAME_DISPLAY_TEXTVIEW" />
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_LOSSES_DISPLAY_TEXTVIEW" />
 
     <Button
         android:id="@+id/player_profile_DELETE_PLAYER_BUTTON"
@@ -107,7 +109,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/player_profile_DELETE_PLAYER_BUTTON"
         android:textSize="12sp"
-        app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_LOSSES_DISPLAY_TEXTVIEW"
+        app:layout_constraintTop_toBottomOf="@id/player_profile_CHANGE_PLAYER_NAME_BUTTON"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

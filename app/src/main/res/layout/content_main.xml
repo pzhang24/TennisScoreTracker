@@ -14,17 +14,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/home_button_NEW_GAME"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45" />
+        app:layout_constraintVertical_bias="0.50" />
 
     <Button
         android:id="@+id/home_button_PLAYER_RECORDS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/home_button_PLAYER_RECORDS"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -36,11 +39,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/home_button_QUIT"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.500"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_button_PLAYER_RECORDS"
-        app:layout_constraintVertical_bias="0.12" />
+        app:layout_constraintVertical_bias="0.36" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

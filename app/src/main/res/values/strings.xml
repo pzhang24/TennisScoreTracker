@@ -27,8 +27,9 @@
     <string name="dialog_update_player_name_HINT">New Name</string>
     <string name="dialog_update_player_name_CANCEL_BUTTON">Cancel</string>
     <string name="dialog_update_player_name_UPDATE_BUTTON">Update</string>
-    <string name="dialog_delete_player_DELETE_TEXTVIEW">Delete this Player?</string>
+    <string name="dialog_delete_player_DELETE_TEXTVIEW">Delete This Player?</string>
     <string name="dialog_delete_player_CANCEL_BUTTON">Cancel</string>
     <string name="dialog_delete_player_DELETE_BUTTON">Delete</string>
-    <string name="dialog_delete_player_WARNING_TEXTVIEW">All player data will be erased!</string>
+    <string name="dialog_delete_player_WARNING_TEXTVIEW">All Player Data Will Be Erased!</string>
+    <string name="player_records_VIEW_PLAYER_RECORDS_TEXTVIEW">PLAYERS</string>
 </resources>
