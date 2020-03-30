@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">TennisScoreTracker</string>
     <string name="action_settings">Settings</string>
-    <string name="home_button_NEW_GAME">New Game</string>
+    <string name="home_button_NEW_MATCH">New Match</string>
     <string name="home_button_PLAYER_RECORDS">Player Records</string>
     <string name="home_button_QUIT">Quit</string>
     <string name="title_activity_player_records">PlayerRecordsActivity</string>
@@ -32,4 +32,11 @@
     <string name="dialog_delete_player_DELETE_BUTTON">Delete</string>
     <string name="dialog_delete_player_WARNING_TEXTVIEW">All Player Data Will Be Erased!</string>
     <string name="player_records_VIEW_PLAYER_RECORDS_TEXTVIEW">PLAYERS</string>
+    <string name="match_select_type_SELECT_TEXTVIEW">Select Match Type</string>
+    <string name="match_select_type_SINGLES_BUTTON">Singles</string>
+    <string name="match_select_type_DOUBLES_BUTTON">DOUBLES</string>
+    <string name="match_player_select_HEADING_TEXTVIEW">Match Setup</string>
+    <string name="fragment_singles_setup_Player_1_TEXTVIEW">Player 1:</string>
+    <string name="fragment_singles_setup_Player_2_TEXTVIEW">Player 2:</string>
+    <string name="fragment_singles_setup_Team_Name_TEXTVIEW">Team PlaceHolder</string>
 </resources>

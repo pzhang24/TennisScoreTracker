@@ -3,6 +3,7 @@ package com.example.tennisscoretracker;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.tennisscoretracker.match_setup.MatchSelectTypeActivity;
 import com.example.tennisscoretracker.player_records.PlayerRecordsActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -33,8 +34,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        configureNewMatchButton();
         configurePlayerRecordsButton();
         //TODO: Configure other buttons to begin other activities.
+    }
+
+    private void configureNewMatchButton() {
+        Button newGameButton = findViewById(R.id.home_button_NEW_GAME);
+        newGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MatchSelectTypeActivity.class));
+            }
+        });
     }
 
     private void configurePlayerRecordsButton(){

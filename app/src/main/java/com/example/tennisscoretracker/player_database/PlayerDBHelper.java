@@ -30,6 +30,12 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "player.db";
     private static final String TABLE_NAME = "player";
+
+    //-------------------------------------------------//
+
+    /*
+    List of columns and their associated data -- be very careful if modifying this
+     */
     private static final String COL_0 = "playerID";
     private static final String COL_1 = "playerName";
     private static final String COL_2 = "wins";
@@ -39,6 +45,8 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
     private static final int PLAYER_NAME_COLUMN = 1;
     private static final int PLAYER_WINS_COLUMN = 2;
     private static final int PLAYER_LOSSES_COLUMN = 3;
+
+    //-------------------------------------------------//
 
     private static final int DB_INSERT_ERROR = -1;
 

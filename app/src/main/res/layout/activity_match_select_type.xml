@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/aleksandar_kyng_tenniscourtphoto"
+    tools:context=".match_setup.MatchSelectTypeActivity">
+
+    <include
+        android:id="@+id/toolbar_match_select_type"
+        layout="@layout/toolbar_main"/>
+
+    <TextView
+        android:id="@+id/match_select_type_SELECT_TEXTVIEW"
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_match_select_type"
+        android:text="@string/match_select_type_SELECT_TEXTVIEW"
+        android:textSize="40sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+         />
+
+    <Button
+        android:id="@+id/match_select_type_SINGLES_BUTTON"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/match_select_type_SINGLES_BUTTON"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/match_select_type_SELECT_TEXTVIEW"
+        android:layout_marginTop="100dp"
+        android:paddingLeft="50dp"
+        android:paddingStart="50dp"
+        android:paddingRight="50dp"
+        android:paddingEnd="50dp"
+        />
+
+    <Button
+        android:id="@+id/match_select_type_DOUBLES_BUTTON"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/match_select_type_DOUBLES_BUTTON"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/match_select_type_SINGLES_BUTTON"
+        android:layout_marginTop="50dp"
+        android:paddingLeft="50dp"
+        android:paddingStart="50dp"
+        android:paddingRight="50dp"
+        android:paddingEnd="50dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

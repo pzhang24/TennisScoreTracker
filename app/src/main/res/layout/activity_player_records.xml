@@ -8,7 +8,7 @@
     tools:context=".player_records.PlayerRecordsActivity">
 
     <include
-        android:id="@+id/toolbar_main"
+        android:id="@+id/toolbar_player_records"
         layout="@layout/toolbar_main"/>
 
     <Button
@@ -23,7 +23,7 @@
         android:text="@string/player_records_button_NEW_PLAYER"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_main" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar_player_records" />
 
 
     <TextView
