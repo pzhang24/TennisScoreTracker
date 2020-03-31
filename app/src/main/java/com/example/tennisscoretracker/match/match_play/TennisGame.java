@@ -27,42 +27,48 @@ public class TennisGame {
     }
 
     /**
-     * Adds a point for team1 if the game is not yet over (ie. no team has won yet)
-     * @return true if a point was successfully added
-     * (if false is returned, that indicates that a team has already won the game)
+     * Adds a point for team1 if the game is not yet over (ie. no team has won yet).
+     * Checks before and after the point is added if anyone has won, and returns the winning team.
+     * @return Returns 1 if team1 has won, 2 if team2 has won, 0 if neither team has won.
      */
-    public boolean addPointTeam1() {
-        if(checkForWinner() == 0) {
-            pointsWon_Team1++;
-            return true;
+    public int addPointTeam1() {
+        int beforeWinner = checkForWinner();
+        if (beforeWinner > 0) {
+            return beforeWinner;
         }
-        return false;
+
+        pointsWon_Team1++;
+
+        return checkForWinner();
     }
 
     /**
-     * Adds a point for team2 if the game is not yet over (ie. no team has won yet)
-     * @return true if a point was successfully added
-     * (if false is returned, that indicates that a team has already won the game)
+     * Adds a point for team2 if the game is not yet over (ie. no team has won yet).
+     * Checks before and after the point is added if anyone has won, and returns the winning team.
+     * @return Returns 1 if team1 has won, 2 if team2 has won, 0 if neither team has won.
      */
-    public boolean addPointTeam2() {
-        if(checkForWinner() == 0) {
-            pointsWon_Team2++;
-            return true;
+    public int addPointTeam2() {
+        int beforeWinner = checkForWinner();
+        if (beforeWinner > 0) {
+            return beforeWinner;
         }
-        return false;
+
+        pointsWon_Team2++;
+
+        return checkForWinner();
     }
 
     /**
      * Check for a winner, and updates this.winningTeamNumber if a team has won.
      * @return Returns 1 if team1 has won, 2 if team2 has won, 0 if neither team has won.
      */
-    public int checkForWinner() {
+    private int checkForWinner() {
         if (pointsWon_Team1 >= pointsNeededToWin && upByTwo(pointsWon_Team1, pointsWon_Team2)) {
             this.winningTeamNumber = TEAM1_NUMBER;
-            return TEAM1_NUMBER;
+            return this.winningTeamNumber;
         } else if (pointsWon_Team2 >= pointsNeededToWin && upByTwo(pointsWon_Team2, pointsWon_Team1)) {
             this.winningTeamNumber = TEAM2_NUMBER;
-            return TEAM2_NUMBER;
+            return this.winningTeamNumber;
         } else {
             return 0;
         }
