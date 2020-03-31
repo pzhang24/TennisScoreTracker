@@ -27,33 +27,25 @@ public class TennisGame {
     }
 
     /**
-     * Adds a point for team1 if the game is not yet over (ie. no team has won yet).
-     * Checks before and after the point is added if anyone has won, and returns the winning team.
-     * @return Returns 1 if team1 has won, 2 if team2 has won, 0 if neither team has won.
+     * Adds a point for the team passed in as a parameter, if the game is not yet over.
+     * Checks before and after point is added for a winner, and returns the winning team number if there is one.
+     * @param teamNumber Must be either 1 for team1, or 2 for team2.
+     * @return Returns 1 if team1 wins, 2 if team2 wins, and 0 if no team has won yet.
      */
-    public int addPointTeam1() {
+    public int addPointForTeam(int teamNumber) {
         int beforeWinner = checkForWinner();
         if (beforeWinner > 0) {
             return beforeWinner;
         }
 
-        pointsWon_Team1++;
-
-        return checkForWinner();
-    }
-
-    /**
-     * Adds a point for team2 if the game is not yet over (ie. no team has won yet).
-     * Checks before and after the point is added if anyone has won, and returns the winning team.
-     * @return Returns 1 if team1 has won, 2 if team2 has won, 0 if neither team has won.
-     */
-    public int addPointTeam2() {
-        int beforeWinner = checkForWinner();
-        if (beforeWinner > 0) {
-            return beforeWinner;
+        switch(teamNumber) {
+            case(TEAM1_NUMBER):
+                this.pointsWon_Team1++;
+                break;
+            case(TEAM2_NUMBER):
+                this.pointsWon_Team2++;
+                break;
         }
-
-        pointsWon_Team2++;
 
         return checkForWinner();
     }
@@ -80,6 +72,10 @@ public class TennisGame {
      */
     public boolean isTieBreak() {
         return isTieBreak;
+    }
+
+    public int getWinningTeamNumber() {
+        return winningTeamNumber;
     }
 
     /**
