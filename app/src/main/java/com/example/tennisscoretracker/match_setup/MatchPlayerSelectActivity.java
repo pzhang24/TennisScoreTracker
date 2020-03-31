@@ -20,13 +20,18 @@ public class MatchPlayerSelectActivity extends AppCompatActivity {
 
         isDoubles = getIntent().getBooleanExtra(MatchSelectTypeActivity.IS_DOUBLES, false);
 
-        addPlayerSelectFragment();
+        addUIFragments();
     }
 
-    private void addPlayerSelectFragment() {
+    /**
+     * Set up the UI display -
+     * includes the player select fragment(s) and the number of sets select fragment
+     */
+    private void addUIFragments() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
+        //Set up the player select fragment(s)
         if (isDoubles) {
             DoublesSetupFragment doublesSetupFragmentTeam1 = new DoublesSetupFragment(TEAM_1_NAME);
             DoublesSetupFragment doublesSetupFragmentTeam2 = new DoublesSetupFragment(TEAM_2_NAME);
@@ -34,15 +39,18 @@ public class MatchPlayerSelectActivity extends AppCompatActivity {
             fragmentTransaction.add(R.id.fragment_player_select_CONTAINER1, doublesSetupFragmentTeam1);
             fragmentTransaction.add(R.id.fragment_player_select_CONTAINER2, doublesSetupFragmentTeam2);
 
-            fragmentTransaction.commit();
-
-
         } else {
             SinglesSetupFragment singlesSetupFragment = new SinglesSetupFragment();
             fragmentTransaction.add(R.id.fragment_player_select_CONTAINER1, singlesSetupFragment);
-            fragmentTransaction.commit();
         }
 
 
+        //Set up the number of sets selection fragment
+        NumberOfSetsFragment numberOfSetsFragment = new NumberOfSetsFragment();
+        fragmentTransaction.add(R.id.fragment_player_select_CONTAINER_SETS, numberOfSetsFragment);
+
+        fragmentTransaction.commit();
     }
+
+
 }

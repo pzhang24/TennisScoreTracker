@@ -39,4 +39,5 @@
     <string name="fragment_singles_setup_Player_1_TEXTVIEW">Player 1:</string>
     <string name="fragment_singles_setup_Player_2_TEXTVIEW">Player 2:</string>
     <string name="fragment_singles_setup_Team_Name_TEXTVIEW">Team PlaceHolder</string>
+    <string name="fragment_number_of_sets_TEXT">Number of Sets:</string>
 </resources>
