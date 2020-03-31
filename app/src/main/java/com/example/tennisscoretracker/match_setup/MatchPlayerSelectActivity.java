@@ -11,8 +11,8 @@ import com.example.tennisscoretracker.R;
 public class MatchPlayerSelectActivity extends AppCompatActivity {
 
     private static boolean isDoubles;
-    private static final String TEAM_1_NAME = "Team 1";
-    private static final String TEAM_2_NAME = "Team 2";
+    private static final String TEAM_1_NAME = "TennisTeam 1";
+    private static final String TEAM_2_NAME = "TennisTeam 2";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

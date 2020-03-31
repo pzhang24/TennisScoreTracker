@@ -15,7 +15,7 @@ import java.util.HashMap;
 import static org.junit.Assert.*;
 
 //Do not use!
-public class PlayerDBHelperTest {
+public class TennisPlayerDBHelperTest {
 
     private PlayerDBHelper playerDBHelper;
     private ArrayList<String> playerNameList;
@@ -26,7 +26,7 @@ public class PlayerDBHelperTest {
 
         playerNameList = new ArrayList<>();
         for (int i = 0; i < playerDBHelper.getDatabaseCapacity(); i++) {
-            playerNameList.add("Player" + i);
+            playerNameList.add("TennisPlayer" + i);
         }
     }
 

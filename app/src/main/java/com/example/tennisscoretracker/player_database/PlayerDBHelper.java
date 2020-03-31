@@ -17,7 +17,7 @@ import java.util.HashMap;
 //Done through the method getInstance(Context context)
 
 /**
- * This is the class for our Player Database. The database stores the ID and Name of
+ * This is the class for our TennisPlayer Database. The database stores the ID and Name of
  * each player (both must be unique) as well as the number of wins and losses
  * associated with each player.
  */
@@ -113,7 +113,7 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = dbStaticInstance.getWritableDatabase();
 
         if(checkPlayerNameAlreadyExist(playerName)) {
-            throw new PlayerNameAlreadyExistsException("Player Name Already Taken!");
+            throw new PlayerNameAlreadyExistsException("TennisPlayer Name Already Taken!");
         } else if (getNumberOfPlayers() >= MAX_PLAYER_CAPACITY) {
             throw new TooManyPlayersException("Reached maximum limit of players! Limit = " +
                     MAX_PLAYER_CAPACITY);
@@ -214,7 +214,7 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
     public boolean updatePlayerName(int playerID, String newPlayerName) throws PlayerNameAlreadyExistsException {
         SQLiteDatabase db = dbStaticInstance.getWritableDatabase();
         if(checkPlayerNameAlreadyExist(newPlayerName)) {
-            throw new PlayerNameAlreadyExistsException("Player name already exists!");
+            throw new PlayerNameAlreadyExistsException("TennisPlayer name already exists!");
         }
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1, newPlayerName);

@@ -84,7 +84,7 @@ public class PlayerRecordsActivity extends AppCompatActivity {
 
     }
 
-    //configures the New Player Button -> when clicked, takes user to NewPlayerActivity
+    //configures the New TennisPlayer Button -> when clicked, takes user to NewPlayerActivity
     private void configureNewPlayerButton(){
         newPlayerButton = (Button)findViewById(R.id.player_records_button_NEW_PLAYER);
         newPlayerButton.setOnClickListener(new View.OnClickListener() {

@@ -58,7 +58,7 @@ public class NewPlayerActivity extends AppCompatActivity {
 
                     //Prompts user to enter a name if editText box is all whitespace
                     Toast.makeText(NewPlayerActivity.this,
-                            "Enter Player Name",
+                            "Enter TennisPlayer Name",
                             Toast.LENGTH_LONG).show();
 
                 } else {
@@ -70,10 +70,10 @@ public class NewPlayerActivity extends AppCompatActivity {
                                 (editPlayerName.getText().toString());
 
                         if(isInserted) {
-                            String message = "New Player Successfully Created";
+                            String message = "New TennisPlayer Successfully Created";
                             Toast.makeText(NewPlayerActivity.this, message, Toast.LENGTH_LONG).show();
                         } else {
-                            String message = "Unable to Create New Player";
+                            String message = "Unable to Create New TennisPlayer";
                             Toast.makeText(NewPlayerActivity.this, message, Toast.LENGTH_LONG).show();
                         }
 
