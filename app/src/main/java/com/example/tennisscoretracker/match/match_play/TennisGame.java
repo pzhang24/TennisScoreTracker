@@ -57,13 +57,13 @@ public class TennisGame {
     private int checkForWinner() {
         if (pointsWon_Team1 >= pointsNeededToWin && upByTwo(pointsWon_Team1, pointsWon_Team2)) {
             this.winningTeamNumber = TEAM1_NUMBER;
-            return this.winningTeamNumber;
         } else if (pointsWon_Team2 >= pointsNeededToWin && upByTwo(pointsWon_Team2, pointsWon_Team1)) {
             this.winningTeamNumber = TEAM2_NUMBER;
-            return this.winningTeamNumber;
         } else {
-            return 0;
+            this.winningTeamNumber = 0;
         }
+
+        return this.winningTeamNumber;
     }
 
     /**
@@ -72,6 +72,76 @@ public class TennisGame {
      */
     public boolean isTieBreak() {
         return isTieBreak;
+    }
+
+    /**
+     * Returns the current score in the game for the reqeusted team as a String
+     * @param teamNumber Either 1 for team1 or 2 for team2. Pass in 0 for both teams score.
+     * @return the current score.
+     * If both team's score is requested, a String concatenating their scores (with a colon ":" in between) is returned.
+     */
+    public String getGameScore(int teamNumber) {
+
+        String scoreTeam1;
+        String scoreTeam2;
+
+
+        switch(pointsWon_Team1) {
+            case(0):
+                scoreTeam1 = "0";
+                break;
+            case(1):
+                scoreTeam1 = "15";
+                break;
+            case(2):
+                scoreTeam1 = "30";
+                break;
+            case(3):
+                scoreTeam1 = "40";
+                break;
+            default:
+                if (pointsWon_Team1 > pointsWon_Team2) {
+                    scoreTeam1 = "AD";
+                } else if (pointsWon_Team1 < pointsWon_Team2) {
+                    scoreTeam1 = "-";
+                } else {
+                    scoreTeam1 = "40";
+                }
+        }
+
+        switch(pointsWon_Team2) {
+            case(0):
+                scoreTeam2 = "0";
+                break;
+            case(1):
+                scoreTeam2 = "15";
+                break;
+            case(2):
+                scoreTeam2 = "30";
+                break;
+            case(3):
+                scoreTeam2 = "40";
+                break;
+            default:
+                if (pointsWon_Team2 > pointsWon_Team1) {
+                    scoreTeam2 = "AD";
+                } else if (pointsWon_Team2 < pointsWon_Team1) {
+                    scoreTeam2 = "-";
+                } else {
+                    scoreTeam2 = "40";
+                }
+        }
+
+        switch(teamNumber) {
+            case(0):
+                return scoreTeam1 + ":" + scoreTeam2;
+            case(1):
+                return scoreTeam1;
+            case(2):
+                return scoreTeam2;
+            default:
+                return null;
+        }
     }
 
     public int getWinningTeamNumber() {

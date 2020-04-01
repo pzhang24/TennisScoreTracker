@@ -67,22 +67,47 @@ public class TennisSet {
     }
 
     /**
+     * Returns the current score in the set for the requested team as a String
+     * @param teamNumber Either 1 for team1 or 2 for team2. Pass in 0 for both teams score.
+     * @return the current score.
+     * If both team's score is requested, a String concatenating their scores (with a hyphen "-" in between) is returned.
+     */
+    public String getSetScore(int teamNumber) {
+        switch(teamNumber) {
+            case(1):
+                return Integer.toString(gamesWon_Team1);
+            case(2):
+                return Integer.toString(gamesWon_Team2);
+            default:
+                return gamesWon_Team1 + "-" + gamesWon_Team2;
+        }
+    }
+
+    /**
+     * Returns the current score in the current game for the requested team as a String
+     * @param teamNumber Either 1 for team1 or 2 for team2. Pass in 0 for both teams score.
+     * @return the current score.
+     * If both team's score is requested, a String concatenating their scores (with a colon ":" in between) is returned.
+     */
+    public String getGameScore(int teamNumber) {
+        return this.currentTennisGame.getGameScore(teamNumber);
+    }
+
+    /**
      * Check for a winner, and updates this.winningTeamNumber if a team has won.
      * @return Returns 1 if team1 has won, 2 if team2 has won, 0 if neither team has won.
      */
     private int checkForWinner() {
         if(gamesWon_Team1 >= gamesNeededToWin && upByTwo(gamesWon_Team1, gamesWon_Team2)) {
             this.winningTeamNumber = TEAM1_NUMBER;
-            return this.winningTeamNumber;
         } else if (gamesWon_Team2 >= gamesNeededToWin && upByTwo(gamesWon_Team2, gamesWon_Team1)) {
             this.winningTeamNumber = TEAM2_NUMBER;
-            return this.winningTeamNumber;
         } else if (gamesCompleted == TIEBREAK_GAME_NUMBER) {
             this.winningTeamNumber = (gamesWon_Team1 > gamesWon_Team2) ? TEAM1_NUMBER : TEAM2_NUMBER;
-            return this.winningTeamNumber;
         } else {
-            return 0;
+            this.winningTeamNumber = 0;
         }
+        return this.winningTeamNumber;
     }
 
     /**
