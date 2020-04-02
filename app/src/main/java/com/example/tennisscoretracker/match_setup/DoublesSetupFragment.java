@@ -22,6 +22,9 @@ public class DoublesSetupFragment extends Fragment {
 
     private PlayerDBHelper playerDBHelper;
 
+    private Spinner spinner1;
+    private Spinner spinner2;
+
 
     public DoublesSetupFragment(String teamName) {
         this.teamName = teamName;
@@ -40,8 +43,8 @@ public class DoublesSetupFragment extends Fragment {
 
         playerDBHelper = PlayerDBHelper.getInstance(getActivity());
 
-        Spinner spinner1 = view.findViewById(R.id.fragment_singles_setup_Player_1_SPINNER);
-        Spinner spinner2 = view.findViewById(R.id.fragment_singles_setup_Player_2_SPINNER);
+        spinner1 = view.findViewById(R.id.fragment_singles_setup_Player_1_SPINNER);
+        spinner2 = view.findViewById(R.id.fragment_singles_setup_Player_2_SPINNER);
 
         setPlayerSpinner(spinner1, getActivity());
         setPlayerSpinner(spinner2, getActivity());
@@ -61,6 +64,14 @@ public class DoublesSetupFragment extends Fragment {
         playerListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinner.setAdapter(playerListAdapter);
+    }
+
+    public String getPlayer1Name(){
+        return spinner1.getSelectedItem().toString();
+    }
+
+    public String getPlayer2Name(){
+        return spinner2.getSelectedItem().toString();
     }
 
 }

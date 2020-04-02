@@ -12,7 +12,7 @@
         layout="@layout/toolbar_main"/>
 
     <TextView
-        android:id="@+id/match_set_up_SELECT_TEXTVIEW"
+        android:id="@+id/activity_match_player_select_SELECT_TEXTVIEW"
         android:background="#FFFFFF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/match_set_up_SELECT_TEXTVIEW"
+        app:layout_constraintTop_toBottomOf="@id/activity_match_player_select_SELECT_TEXTVIEW"
         android:layout_marginTop="100dp"
         android:id="@+id/fragment_player_select_CONTAINER1"/>
 
@@ -43,5 +43,16 @@
         app:layout_constraintTop_toBottomOf="@id/fragment_player_select_CONTAINER2"
         android:layout_marginTop="100dp"
         android:id="@+id/fragment_player_select_CONTAINER_SETS"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/fragment_player_select_CONTAINER_SETS"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="100dp"
+        android:text="@string/activity_match_player_select_BUTTON_BEGIN_MATCH"
+        android:id="@+id/activity_match_player_select_BEGIN_MATCH_BUTTON"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

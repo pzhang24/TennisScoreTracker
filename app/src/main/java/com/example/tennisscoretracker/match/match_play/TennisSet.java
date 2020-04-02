@@ -36,6 +36,11 @@ public class TennisSet {
      * @return Returns 1 if team1 wins this set, 2 if team2 wins this set, and 0 if no team has won this set yet.
      */
     public int addPointForTeam(int teamNumber) {
+
+        //check that we've won set (before and after)
+        //call TennisGame.addPointForTeam() -> if we have a winner, add to their gamesWon tally
+        //also increment the gamesCompleted, and replace currentTennisGame with a new game (note tiebreaker games!)
+
         int beforeSetWinner = checkForWinner();
         if (beforeSetWinner > 0) {
             return beforeSetWinner;
@@ -60,9 +65,7 @@ public class TennisSet {
         }
 
 
-        //TODO: check that we've won set (before and after)
-        //TODO: call TennisGame.addPointForTeam() -> if we have a winner, add to their gamesWon tally
-        //TODO: also increment the gamesCompleted, and replace currentTennisGame with a new game (note tiebreaker games!)
+
         return checkForWinner();
     }
 

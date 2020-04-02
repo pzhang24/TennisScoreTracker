@@ -7,8 +7,8 @@ import java.util.List;
 
 public class TennisMatch {
 
-    private static final int FORMAT_SINGLES = 1;
-    private static final int FORMAT_DOUBLES = 2;
+    //private static final int FORMAT_SINGLES = 1;
+    //private static final int FORMAT_DOUBLES = 2;
 
     //May need in future ie for saving data about a match in progress
     //private int format;
@@ -43,7 +43,6 @@ public class TennisMatch {
         this.previousSetResults = new ArrayList<>();
     }
 
-    //TODO: implement methods to update the state of our TennisMatch
     /**
      * Adds a point for the team passed in as a parameter, if the match is not yet over.
      * Checks before and after point is added for a winner of this match, and returns the winning team number if there is one.
@@ -123,6 +122,10 @@ public class TennisMatch {
         return this.currentTennisSet.getGameScore(teamNumber);
     }
 
+    /**
+     * Returns the number of sets already completed.
+     * @return number of sets already completed.
+     */
     public int getSetsCompleted() {
         return setsCompleted;
     }
