@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/fragment_player_action_PLAYER_NAME"/>
+
+    <Button
+        android:id="@+id/fragment_player_action_ACE_BUTTON"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/fragment_player_action_PLAYER_NAME"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.5"
+        android:text="@string/fragment_player_action_ACE_BUTTON"
+        android:background="@drawable/player_action_button_positive_background"/>
+
+    <Button
+        android:id="@+id/fragment_player_action_WINNER_BUTTON"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/fragment_player_action_PLAYER_NAME"
+        app:layout_constraintStart_toEndOf="@id/fragment_player_action_ACE_BUTTON"
+        app:layout_constraintWidth_percent="0.5"
+        android:text="@string/fragment_player_action_WINNER_BUTTON"
+        android:background="@drawable/player_action_button_positive_background"/>
+
+    <Button
+        android:id="@+id/fragment_player_action_DOUBLE_FAULT_BUTTON"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/fragment_player_action_ACE_BUTTON"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.333"
+        android:text="@string/fragment_player_action_DOUBLE_FAULT_BUTTON"
+        android:background="@drawable/player_action_button_negative_background"/>
+    <Button
+        android:id="@+id/fragment_player_action_FORCED_ERROR_BUTTON"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/fragment_player_action_ACE_BUTTON"
+        app:layout_constraintBottom_toBottomOf="@id/fragment_player_action_UNFORCED_ERROR_BUTTON"
+        app:layout_constraintStart_toEndOf="@id/fragment_player_action_DOUBLE_FAULT_BUTTON"
+        app:layout_constraintWidth_percent="0.333"
+        android:text="@string/fragment_player_action_FORCED_ERROR_BUTTON"
+        android:background="@drawable/player_action_button_negative_background"/>
+    <Button
+        android:id="@+id/fragment_player_action_UNFORCED_ERROR_BUTTON"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/fragment_player_action_ACE_BUTTON"
+        app:layout_constraintStart_toEndOf="@id/fragment_player_action_FORCED_ERROR_BUTTON"
+        app:layout_constraintWidth_percent="0.333"
+        android:text="@string/fragment_player_action_UNFORCED_ERROR_BUTTON"
+        android:background="@drawable/player_action_button_negative_background"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

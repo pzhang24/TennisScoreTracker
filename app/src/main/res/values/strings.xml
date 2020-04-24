@@ -41,4 +41,10 @@
     <string name="fragment_singles_setup_Team_Name_TEXTVIEW">Team PlaceHolder</string>
     <string name="fragment_number_of_sets_TEXT">Number of Sets:</string>
     <string name="activity_match_player_select_BUTTON_BEGIN_MATCH">Begin Match</string>
+    <string name="fragment_player_action_ADD_POINT_BUTTON">Add Point</string>
+    <string name="fragment_player_action_ACE_BUTTON">ACE</string>
+    <string name="fragment_player_action_WINNER_BUTTON">WINNER</string>
+    <string name="fragment_player_action_DOUBLE_FAULT_BUTTON">DOUBLE FAULT</string>
+    <string name="fragment_player_action_FORCED_ERROR_BUTTON">FORCED ERR.</string>
+    <string name="fragment_player_action_UNFORCED_ERROR_BUTTON">UNFORCED ERR.</string>
 </resources>

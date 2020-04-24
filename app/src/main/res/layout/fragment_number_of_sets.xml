@@ -9,7 +9,8 @@
         android:layout_height="wrap_content"
         android:text="@string/fragment_number_of_sets_TEXT"
         android:id="@+id/fragment_number_of_sets_TEXT"
-        android:textSize="32sp">
+        android:textSize="32sp"
+        android:textStyle="bold">
     </TextView>
 
     <Spinner

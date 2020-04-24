@@ -61,11 +61,11 @@ public class SinglesSetupFragment extends Fragment {
 
     }
 
-    public String getPlayer1Name(){
+    String getPlayer1Name(){
         return spinner1.getSelectedItem().toString();
     }
 
-    public String getPlayer2Name(){
+    String getPlayer2Name(){
         return spinner2.getSelectedItem().toString();
     }
 }

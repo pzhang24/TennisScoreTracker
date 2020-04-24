@@ -18,6 +18,8 @@ public class NumberOfSetsFragment extends Fragment {
 
     private static final String[] SET_OPTIONS_ARRAY = {"1", "3", "5"};
 
+    private Spinner setsSpinner;
+
 
     @Nullable
     @Override
@@ -29,7 +31,7 @@ public class NumberOfSetsFragment extends Fragment {
             //Do nothing
         }
 
-        Spinner setsSpinner = view.findViewById(R.id.fragment_number_of_sets_SPINNER);
+        setsSpinner = view.findViewById(R.id.fragment_number_of_sets_SPINNER);
 
         setSetsSpinner(setsSpinner, getActivity());
 
@@ -51,5 +53,9 @@ public class NumberOfSetsFragment extends Fragment {
             spinner.setAdapter(setListAdapter);
         }
 
+    }
+
+    int getNumberOfSets() {
+        return Integer.valueOf(setsSpinner.getSelectedItem().toString());
     }
 }

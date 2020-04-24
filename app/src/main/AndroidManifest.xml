@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".match.MatchScoreTrackerActivity"
+            android:screenOrientation="landscape"></activity>
         <activity android:name=".match_setup.MatchPlayerSelectActivity" />
         <activity android:name=".match_setup.MatchSelectTypeActivity" />
         <activity android:name=".player_records.PlayerProfileActivity" />

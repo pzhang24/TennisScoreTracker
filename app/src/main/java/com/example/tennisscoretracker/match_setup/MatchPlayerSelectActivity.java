@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.tennisscoretracker.R;
+import com.example.tennisscoretracker.match.MatchScoreTrackerActivity;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,6 +21,17 @@ public class MatchPlayerSelectActivity extends AppCompatActivity {
     private boolean isDoubles;
     private static final String TEAM_1_NAME = "Team 1";
     private static final String TEAM_2_NAME = "Team 2";
+
+    private static final String PLAYER_1_EXTRA = "player_1";
+    private static final String PLAYER_2_EXTRA = "player_2";
+
+    private static final String TEAM_1_PLAYER_1_EXTRA = "team_1_player_1";
+    private static final String TEAM_1_PLAYER_2_EXTRA = "team_1_player_2";
+    private static final String TEAM_2_PLAYER_1_EXTRA = "team_2_player_1";
+    private static final String TEAM_2_PLAYER_2_EXTRA = "team_2_player_2";
+
+    private static final String NUM_SETS_EXTRA = "num_sets";
+    private static final String IS_DOUBLES_EXTRA = "is_doubles";
 
     private Button beginMatchButton;
     private DoublesSetupFragment doublesSetupFragmentTeam1;
@@ -82,6 +95,7 @@ public class MatchPlayerSelectActivity extends AppCompatActivity {
 
                 //Requires logical checks to make sure that a valid combination of players is selected
                 //ie. A player cannot play with/against themselves
+
                 if(isDoubles) {
                     //If format is doubles...
                     String team1Player1 = doublesSetupFragmentTeam1.getPlayer1Name();
@@ -100,7 +114,17 @@ public class MatchPlayerSelectActivity extends AppCompatActivity {
                         Toast.makeText(MatchPlayerSelectActivity.this,
                                 "All four players selected must be different players!", Toast.LENGTH_SHORT).show();
                     } else {
-                        //TODO: start match activity
+                        //Begin MatchScoreTrackerActivity
+                        Intent intent = new Intent(
+                                MatchPlayerSelectActivity.this, MatchScoreTrackerActivity.class);
+                        intent.putExtra(IS_DOUBLES_EXTRA, isDoubles);
+                        intent.putExtra(NUM_SETS_EXTRA, numberOfSetsFragment.getNumberOfSets());
+                        intent.putExtra(TEAM_1_PLAYER_1_EXTRA, team1Player1);
+                        intent.putExtra(TEAM_1_PLAYER_2_EXTRA, team1Player2);
+                        intent.putExtra(TEAM_2_PLAYER_1_EXTRA, team2Player1);
+                        intent.putExtra(TEAM_2_PLAYER_2_EXTRA, team2Player2);
+                        startActivity(intent);
+
                     }
 
                 } else {
@@ -112,7 +136,14 @@ public class MatchPlayerSelectActivity extends AppCompatActivity {
                         Toast.makeText(MatchPlayerSelectActivity.this,
                                 "The two players selected must be different players!", Toast.LENGTH_SHORT).show();
                     } else {
-                        //TODO: start match activity
+                        //Begin MatchScoreTrackerActivity
+                        Intent intent = new Intent(
+                                MatchPlayerSelectActivity.this, MatchScoreTrackerActivity.class);
+                        intent.putExtra(IS_DOUBLES_EXTRA, isDoubles);
+                        intent.putExtra(NUM_SETS_EXTRA, numberOfSetsFragment.getNumberOfSets());
+                        intent.putExtra(PLAYER_1_EXTRA, player1);
+                        intent.putExtra(PLAYER_2_EXTRA, player2);
+                        startActivity(intent);
                     }
                 }
 
