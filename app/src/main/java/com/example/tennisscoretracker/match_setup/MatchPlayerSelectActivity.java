@@ -22,9 +22,7 @@ public class MatchPlayerSelectActivity extends AppCompatActivity {
     private static final String TEAM_1_NAME = "Team 1";
     private static final String TEAM_2_NAME = "Team 2";
 
-    private static final String PLAYER_1_EXTRA = "player_1";
-    private static final String PLAYER_2_EXTRA = "player_2";
-
+    //A team can have one or two players, depending on whether we're playing singles or doubles
     private static final String TEAM_1_PLAYER_1_EXTRA = "team_1_player_1";
     private static final String TEAM_1_PLAYER_2_EXTRA = "team_1_player_2";
     private static final String TEAM_2_PLAYER_1_EXTRA = "team_2_player_1";
@@ -141,8 +139,8 @@ public class MatchPlayerSelectActivity extends AppCompatActivity {
                                 MatchPlayerSelectActivity.this, MatchScoreTrackerActivity.class);
                         intent.putExtra(IS_DOUBLES_EXTRA, isDoubles);
                         intent.putExtra(NUM_SETS_EXTRA, numberOfSetsFragment.getNumberOfSets());
-                        intent.putExtra(PLAYER_1_EXTRA, player1);
-                        intent.putExtra(PLAYER_2_EXTRA, player2);
+                        intent.putExtra(TEAM_1_PLAYER_1_EXTRA, player1);
+                        intent.putExtra(TEAM_2_PLAYER_1_EXTRA, player2);
                         startActivity(intent);
                     }
                 }
