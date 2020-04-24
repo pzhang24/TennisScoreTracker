@@ -17,8 +17,8 @@ import java.util.Set;
 public class MatchPlayerSelectActivity extends AppCompatActivity {
 
     private boolean isDoubles;
-    private static final String TEAM_1_NAME = "TennisTeam 1";
-    private static final String TEAM_2_NAME = "TennisTeam 2";
+    private static final String TEAM_1_NAME = "Team 1";
+    private static final String TEAM_2_NAME = "Team 2";
 
     private Button beginMatchButton;
     private DoublesSetupFragment doublesSetupFragmentTeam1;
@@ -34,6 +34,7 @@ public class MatchPlayerSelectActivity extends AppCompatActivity {
         isDoubles = getIntent().getBooleanExtra(MatchSelectTypeActivity.IS_DOUBLES, false);
 
         addUIFragments();
+        initializePlayMatchButton();
     }
 
     /**
@@ -46,9 +47,14 @@ public class MatchPlayerSelectActivity extends AppCompatActivity {
 
         //Set up the player select fragment(s)
         if (isDoubles) {
+
+            doublesSetupFragmentTeam1 = DoublesSetupFragment.newInstance(TEAM_1_NAME);
+            doublesSetupFragmentTeam2 = DoublesSetupFragment.newInstance(TEAM_2_NAME);
+
+            /*
             doublesSetupFragmentTeam1 = new DoublesSetupFragment(TEAM_1_NAME);
             doublesSetupFragmentTeam2 = new DoublesSetupFragment(TEAM_2_NAME);
-
+               */
             fragmentTransaction.add(R.id.fragment_player_select_CONTAINER1, doublesSetupFragmentTeam1);
             fragmentTransaction.add(R.id.fragment_player_select_CONTAINER2, doublesSetupFragmentTeam2);
 
@@ -65,12 +71,17 @@ public class MatchPlayerSelectActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+    /**
+     * Initialize the button to begin a match.
+     */
     private void initializePlayMatchButton() {
         beginMatchButton = findViewById(R.id.activity_match_player_select_BEGIN_MATCH_BUTTON);
         beginMatchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                //Requires logical checks to make sure that a valid combination of players is selected
+                //ie. A player cannot play with/against themselves
                 if(isDoubles) {
                     //If format is doubles...
                     String team1Player1 = doublesSetupFragmentTeam1.getPlayer1Name();

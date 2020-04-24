@@ -18,16 +18,30 @@ import com.example.tennisscoretracker.player_database.PlayerDBHelper;
 
 public class DoublesSetupFragment extends Fragment {
 
-    private String teamName;
+    private static final String TEAM_NAME_KEY = "team_name_key";
+
+    //private String teamName;
 
     private PlayerDBHelper playerDBHelper;
 
     private Spinner spinner1;
     private Spinner spinner2;
 
-
+    /*
     public DoublesSetupFragment(String teamName) {
         this.teamName = teamName;
+    }
+
+     */
+
+    //Static factory method
+    public static DoublesSetupFragment newInstance(String teamName) {
+        DoublesSetupFragment doublesSetupFragment = new DoublesSetupFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(TEAM_NAME_KEY, teamName);
+
+        doublesSetupFragment.setArguments(bundle);
+        return doublesSetupFragment;
     }
 
     @Nullable
@@ -35,7 +49,7 @@ public class DoublesSetupFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_doubles_setup, container, false);
         TextView teamNameTextView = view.findViewById(R.id.fragment_doubles_setup_Team_Name_TEXTVIEW);
-        teamNameTextView.setText(teamName);
+        teamNameTextView.setText(getArguments().getString(TEAM_NAME_KEY));
 
         while(getActivity() == null) {
             //Do nothing
