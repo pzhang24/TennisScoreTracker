@@ -85,6 +85,23 @@ public class TennisGame {
         String scoreTeam1;
         String scoreTeam2;
 
+        //Special case for tiebreak game
+        if(isTieBreak) {
+            scoreTeam1 = Integer.toString(pointsWon_Team1);
+            scoreTeam2 = Integer.toString(pointsWon_Team2);
+
+            switch(teamNumber) {
+                case(0):
+                    return scoreTeam1 + ":" + scoreTeam2;
+                case(1):
+                    return scoreTeam1;
+                case(2):
+                    return scoreTeam2;
+                default:
+                    return null;
+            }
+        }
+
 
         switch(pointsWon_Team1) {
             case(0):

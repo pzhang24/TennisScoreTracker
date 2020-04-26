@@ -4,17 +4,17 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/fragment_score_TOP_TEXTVIEW"
+        android:id="@+id/fragment_scorebox_TOP_TEXTVIEW"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/fragment_score_scorebox_border"/>
+        android:background="@drawable/fragment_scorebox_border"/>
 
     <TextView
-        android:id="@+id/fragment_score_BOTTOM_TEXTVIEW"
+        android:id="@+id/fragment_scorebox_BOTTOM_TEXTVIEW"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/fragment_score_scorebox_border"/>
+        android:background="@drawable/fragment_scorebox_border"/>
 
 </LinearLayout>
