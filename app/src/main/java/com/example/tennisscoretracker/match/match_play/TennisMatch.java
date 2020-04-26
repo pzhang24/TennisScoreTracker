@@ -1,11 +1,11 @@
 package com.example.tennisscoretracker.match.match_play;
 
-import com.example.tennisscoretracker.match.match_team.TennisTeam;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class TennisMatch {
+
+
 
     //private static final int FORMAT_SINGLES = 1;
     //private static final int FORMAT_DOUBLES = 2;
@@ -15,7 +15,9 @@ public class TennisMatch {
     //private TennisTeam tennisTeam1;
     //private TennisTeam tennisTeam2;
 
+    private static final int MATCH_IS_FINISHED = -1;
     private int winningTeamNumber;
+
     private static final int TEAM1_NUMBER = 1;
     private static final int TEAM2_NUMBER = 2;
     private static final int BOTH_TEAMS_NUMBER = 0;
@@ -101,6 +103,14 @@ public class TennisMatch {
         }
     }
 
+    /**
+     * Gets the results for all previous sets.
+     * @return a new List of Strings representing the score for all previous sets.
+     */
+    public List<String> getAllPreviousSetResults() {
+        return new ArrayList<>(previousSetResults);
+    }
+
 
     /**
      * Returns the score for the current set for the requested team.
@@ -128,5 +138,25 @@ public class TennisMatch {
      */
     public int getSetsCompleted() {
         return setsCompleted;
+    }
+
+    /**
+     * Returns the current set number if the match is not yet over.
+     * @return the current set number, or -1 if the match is over.
+     */
+    public int getCurrentSetNumber() {
+        if(setsCompleted < bestOfSets) {
+            return setsCompleted + 1;
+        } else {
+            return MATCH_IS_FINISHED;
+        }
+    }
+
+    /**
+     * Can be used to check if match is finished or not.
+     * @return true if match is finished, and false if match is not finished yet.
+     */
+    public boolean isMatchFinished() {
+        return (getCurrentSetNumber() == MATCH_IS_FINISHED);
     }
 }

@@ -75,7 +75,7 @@ public class TennisGame {
     }
 
     /**
-     * Returns the current score in the game for the reqeusted team as a String
+     * Returns the current score in the game for the requested team as a String
      * @param teamNumber Either 1 for team1 or 2 for team2. Pass in 0 for both teams score.
      * @return the current score.
      * If both team's score is requested, a String concatenating their scores (with a colon ":" in between) is returned.
