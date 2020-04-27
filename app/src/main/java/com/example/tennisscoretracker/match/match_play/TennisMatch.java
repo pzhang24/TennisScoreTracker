@@ -1,5 +1,7 @@
 package com.example.tennisscoretracker.match.match_play;
 
+import com.example.tennisscoretracker.match.match_team.TennisTeam;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,13 +9,13 @@ public class TennisMatch {
 
 
 
-    //private static final int FORMAT_SINGLES = 1;
-    //private static final int FORMAT_DOUBLES = 2;
+    public static final int FORMAT_SINGLES = 1;
+    public static final int FORMAT_DOUBLES = 2;
 
     //May need in future ie for saving data about a match in progress
-    //private int format;
-    //private TennisTeam tennisTeam1;
-    //private TennisTeam tennisTeam2;
+    private int format;
+    private TennisTeam tennisTeam1;
+    private TennisTeam tennisTeam2;
 
     private static final int MATCH_IS_FINISHED = -1;
     private int winningTeamNumber;
@@ -35,7 +37,17 @@ public class TennisMatch {
 
     private TennisSet currentTennisSet;
 
-    public TennisMatch(int bestOfSets) {
+    /**
+     * Constructor
+     * @param bestOfSets either 1, 3, or 5
+     * @param format either this.FORMAT_SINGLES for Singles, or this.FORMAT_DOUBLES for Doubles
+     * @param team1 a tennis team
+     * @param team2 the other tennis team
+     */
+    public TennisMatch(int bestOfSets, int format, TennisTeam team1, TennisTeam team2) {
+        this.format = format;
+        this.tennisTeam1 = team1;
+        this.tennisTeam2 = team2;
         this.setsWon_Team1 = 0;
         this.setsWon_Team2 = 0;
         this.bestOfSets = bestOfSets;
@@ -150,6 +162,46 @@ public class TennisMatch {
         } else {
             return MATCH_IS_FINISHED;
         }
+    }
+
+    /**
+     * Returns whether this match is a doubles or singles match
+     * @return true if it is a doubles match, and false if it is a singles match
+     */
+    public boolean isDoubles() {
+        return format == FORMAT_DOUBLES;
+    }
+
+    /**
+     * Returns a new object representing team1
+     * @return a new TennisTeam object representing team1
+     */
+    public TennisTeam getTennisTeam1() {
+        TennisTeam teamCopy;
+        if(tennisTeam1.isDoublesTeam()) {
+            teamCopy = new TennisTeam(tennisTeam1.getPlayer1Name(), tennisTeam1.getPlayer1ID(),
+                    tennisTeam1.getPlayer2Name(), tennisTeam1.getPlayer2ID());
+        } else {
+            teamCopy = new TennisTeam(tennisTeam1.getPlayer1Name(), tennisTeam1.getPlayer1ID());
+        }
+
+        return teamCopy;
+    }
+
+    /**
+     * Returns a new object representing team2
+     * @return a new TennisTeam object representing team2
+     */
+    public TennisTeam getTennisTeam2() {
+        TennisTeam teamCopy;
+        if(tennisTeam2.isDoublesTeam()) {
+            teamCopy = new TennisTeam(tennisTeam2.getPlayer1Name(), tennisTeam2.getPlayer1ID(),
+                    tennisTeam2.getPlayer2Name(), tennisTeam2.getPlayer2ID());
+        } else {
+            teamCopy = new TennisTeam(tennisTeam2.getPlayer1Name(), tennisTeam2.getPlayer1ID());
+        }
+
+        return teamCopy;
     }
 
     /**

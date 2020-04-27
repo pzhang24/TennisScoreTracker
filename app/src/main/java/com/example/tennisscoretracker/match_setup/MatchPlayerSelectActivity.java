@@ -23,13 +23,13 @@ public class MatchPlayerSelectActivity extends AppCompatActivity {
     private static final String TEAM_2_NAME = "Team 2";
 
     //A team can have one or two players, depending on whether we're playing singles or doubles
-    private static final String TEAM_1_PLAYER_1_EXTRA = "team_1_player_1";
-    private static final String TEAM_1_PLAYER_2_EXTRA = "team_1_player_2";
-    private static final String TEAM_2_PLAYER_1_EXTRA = "team_2_player_1";
-    private static final String TEAM_2_PLAYER_2_EXTRA = "team_2_player_2";
+    public static final String TEAM_1_PLAYER_1_EXTRA = "team_1_player_1";
+    public static final String TEAM_1_PLAYER_2_EXTRA = "team_1_player_2";
+    public static final String TEAM_2_PLAYER_1_EXTRA = "team_2_player_1";
+    public static final String TEAM_2_PLAYER_2_EXTRA = "team_2_player_2";
 
-    private static final String NUM_SETS_EXTRA = "num_sets";
-    private static final String IS_DOUBLES_EXTRA = "is_doubles";
+    public static final String NUM_SETS_EXTRA = "num_sets";
+    public static final String IS_DOUBLES_EXTRA = "is_doubles";
 
     private Button beginMatchButton;
     private DoublesSetupFragment doublesSetupFragmentTeam1;
