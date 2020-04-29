@@ -157,11 +157,20 @@ public class TennisMatch {
      * @return the current set number, or -1 if the match is over.
      */
     public int getCurrentSetNumber() {
-        if(setsCompleted < bestOfSets) {
-            return setsCompleted + 1;
-        } else {
+
+        if(this.winningTeamNumber != 0) {
             return MATCH_IS_FINISHED;
+        } else {
+            return setsCompleted + 1;
         }
+    }
+
+    /**
+     * Returns the maximum number of sets to be played, ie. the best of ___ sets
+     * @return the max number of sets to be played
+     */
+    public int getTotalNumberOfSets() {
+        return bestOfSets;
     }
 
     /**
@@ -209,6 +218,6 @@ public class TennisMatch {
      * @return true if match is finished, and false if match is not finished yet.
      */
     public boolean isMatchFinished() {
-        return (getCurrentSetNumber() == MATCH_IS_FINISHED);
+        return (this.winningTeamNumber != 0);
     }
 }

@@ -64,12 +64,29 @@ public class TennisTeam {
     /**
      * Gets the ID of tennisPlayer2 on this team, if tennisPlayer2 exists.
      * @return an int representing tennisPlayer2's ID.
-     * If tennisPlayer2 does not exist (this.isDoublesTeam() returns false), return -1.
+     * If tennisPlayer2 does not exist (ie this.isDoublesTeam() returns false), return -1.
      */
     public int getPlayer2ID() {
         return (format == FORMAT_DOUBLES) ? tennisPlayer2.getPlayerId() : -1;
     }
 
+    /**
+     * Gets the combined name of both players if this team is a doubles team,
+     * or just tennisPlayer1's name if this team is a singles team.
+     * @return either both player's names in the format "player1Name/player2Name" if team is a doubles team,
+     * or only the name of tennisPlayer1 if this team is a singles team.
+     */
+    public String getFullTeamName() {
+        return (format == FORMAT_DOUBLES) ?
+                (tennisPlayer1.getPlayerName() + "/" + tennisPlayer2.getPlayerName())
+                : tennisPlayer1.getPlayerName();
+    }
+
+
+    /**
+     * Returns whether this team is a doubles or singles team
+     * @return true if doubles, false if singles.
+     */
     public boolean isDoublesTeam() {
         return format == FORMAT_DOUBLES;
     }
