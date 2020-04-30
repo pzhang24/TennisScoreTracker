@@ -580,7 +580,7 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
      */
     private void displayResultAndReturn(int winningTeam, String winningTeamName, String losingTeamName) {
         StringBuilder resultMessage = new StringBuilder();
-        resultMessage.append(winningTeamName).append(" d. ").append(losingTeamName).append(" ");
+        resultMessage.append(winningTeamName).append(" def. ").append(losingTeamName).append(" ");
 
         for (String setResult : tennisMatch.getAllPreviousSetResults()) {
             String[] setResultArray = parseScore(setResult, "-");

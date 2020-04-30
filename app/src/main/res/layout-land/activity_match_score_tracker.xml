@@ -13,7 +13,8 @@
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="50dp"
-        android:textSize="24sp"
+        android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,7 +22,7 @@
         android:id="@+id/activity_match_score_tracker_CURRENT_SET_TEXTVIEW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="28sp"
         app:layout_constraintStart_toStartOf="@id/activity_match_score_tracker_BEST_OF_SETS_TEXTVIEW"
         app:layout_constraintTop_toBottomOf="@id/activity_match_score_tracker_BEST_OF_SETS_TEXTVIEW" />
 
@@ -29,6 +30,7 @@
         android:id="@+id/activity_match_score_tracker_PLAYER_SCOREBOX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         app:layout_constraintStart_toStartOf="@id/activity_match_score_tracker_CURRENT_SET_TEXTVIEW"
         app:layout_constraintTop_toBottomOf="@id/activity_match_score_tracker_CURRENT_SET_TEXTVIEW" />
 
@@ -88,13 +90,14 @@
 
     <LinearLayout
         android:id="@+id/activity_match_score_tracker_TEAM_ONE_PLAYER_ACTION_LAYOUT"
-        android:layout_width="200dp"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginStart="75dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activity_match_score_tracker_PLAYER_SCOREBOX"
-        app:layout_constraintWidth_percent="0.25">
+        app:layout_constraintTop_toBottomOf="@id/activity_match_score_tracker_PLAYER_SCOREBOX">
 
         <FrameLayout
             android:id="@+id/activity_match_score_tracker_PLAYER_ACTION_BOX_ONE"
@@ -109,12 +112,13 @@
 
     <LinearLayout
         android:id="@+id/activity_match_score_tracker_TEAM_TWO_PLAYER_ACTION_LAYOUT"
-        android:layout_width="200dp"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
+        android:layout_marginRight="75dp"
+        android:layout_marginEnd="75dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/activity_match_score_tracker_TEAM_ONE_PLAYER_ACTION_LAYOUT"
-        app:layout_constraintWidth_percent="0.25">
+        app:layout_constraintTop_toTopOf="@+id/activity_match_score_tracker_TEAM_ONE_PLAYER_ACTION_LAYOUT">
 
         <FrameLayout
             android:id="@+id/activity_match_score_tracker_PLAYER_ACTION_BOX_THREE"
