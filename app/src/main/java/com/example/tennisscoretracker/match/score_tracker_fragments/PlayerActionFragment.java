@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +30,7 @@ public class PlayerActionFragment extends Fragment {
 
     private static final String TEAM_NUMBER_KEY = "team_number";
     private static final String PLAYER_NUMBER_KEY = "player_number";
+    private static final String PLAYER_NAME_KEY = "player_name";
 
     private Button aceButton;
     private Button winnerButton;
@@ -45,13 +47,15 @@ public class PlayerActionFragment extends Fragment {
      * Factory method to instantiate a new PlayerActionFragment
      * @param teamNumber The team number. (In the context of this app, either 1 for team1 or 2 for team2.)
      * @param playerNumber The player number. (In the context of this app, either 1 for player1 or 2 for player2.)
+     * @param playerName
      * @return new instance of PlayerActionFragment
      */
-    public static PlayerActionFragment newInstance(int teamNumber, int playerNumber) {
+    public static PlayerActionFragment newInstance(int teamNumber, int playerNumber, String playerName) {
         PlayerActionFragment fragment = new PlayerActionFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(TEAM_NUMBER_KEY, teamNumber);
         bundle.putInt(PLAYER_NUMBER_KEY, playerNumber);
+        bundle.putString(PLAYER_NAME_KEY, playerName);
 
         fragment.setArguments(bundle);
         return fragment;
@@ -64,6 +68,7 @@ public class PlayerActionFragment extends Fragment {
 
         setFragmentIDFields();
 
+        configurePlayerNameTextView(view);
         configureAceButton(view);
         configureWinnerButton(view);
         configureDoubleFaultButton(view);
@@ -76,6 +81,11 @@ public class PlayerActionFragment extends Fragment {
     private void setFragmentIDFields() {
         teamNumber = getArguments().getInt(TEAM_NUMBER_KEY);
         playerNumber = getArguments().getInt(PLAYER_NUMBER_KEY);
+    }
+
+    private void configurePlayerNameTextView(View parentView) {
+        TextView playerName = parentView.findViewById(R.id.fragment_player_action_PLAYER_NAME);
+        playerName.setText(getArguments().getString(PLAYER_NAME_KEY, "ERROR"));
     }
 
     private void configureUnforcedErrorButton(View view) {

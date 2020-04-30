@@ -55,6 +55,8 @@ public class TennisMatch {
         this.setsCompleted = 0;
         this.winningTeamNumber = 0;
         this.previousSetResults = new ArrayList<>();
+
+        this.currentTennisSet = new TennisSet();
     }
 
     /**

@@ -114,7 +114,11 @@ public class TennisGame {
                 scoreTeam1 = "30";
                 break;
             case(3):
-                scoreTeam1 = "40";
+                if(pointsWon_Team2 == 4) {
+                    scoreTeam1 = "-";
+                } else {
+                    scoreTeam1 = "40";
+                }
                 break;
             default:
                 if (pointsWon_Team1 > pointsWon_Team2) {
@@ -137,7 +141,11 @@ public class TennisGame {
                 scoreTeam2 = "30";
                 break;
             case(3):
-                scoreTeam2 = "40";
+                if(pointsWon_Team1 == 4) {
+                    scoreTeam2 = "-";
+                } else {
+                    scoreTeam2 = "40";
+                }
                 break;
             default:
                 if (pointsWon_Team2 > pointsWon_Team1) {

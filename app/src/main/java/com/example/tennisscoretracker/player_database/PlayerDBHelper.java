@@ -232,6 +232,46 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
     }
 
     /**
+     * Updates the number of wins belonging to a player in the database.
+     * Calling this method mutates our database.
+     * @param playerID the ID of the player whose name we want to change.
+     *                 Must be between 0 and number of rows in database - 1
+     *                 (ie ID is in the database).
+     * @param newNumberOfWins the new number of wins belonging to the player.
+     * @return true if player's number of wins was successfully updated, and false otherwise.
+     */
+    public boolean updatePlayerWins(int playerID, int newNumberOfWins) {
+        SQLiteDatabase db = dbStaticInstance.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_2, newNumberOfWins);
+
+        int isSuccess = db.update(TABLE_NAME, contentValues, COL_0 + " =? ",
+                new String[] {String.valueOf(playerID)});
+
+        return isSuccess > 0;
+    }
+
+    /**
+     * Updates the number of losses belonging to a player in the database.
+     * Calling this method mutates our database.
+     * @param playerID the ID of the player whose name we want to change.
+     *                 Must be between 0 and number of rows in database - 1
+     *                 (ie ID is in the database).
+     * @param newNumberOfLosses the new number of losses belonging to the player.
+     * @return true if player's number of losses was successfully updated, and false otherwise.
+     */
+    public boolean updatePlayerLosses(int playerID, int newNumberOfLosses) {
+        SQLiteDatabase db = dbStaticInstance.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_3, newNumberOfLosses);
+
+        int isSuccess = db.update(TABLE_NAME, contentValues, COL_0 + " =? ",
+                new String[] {String.valueOf(playerID)});
+
+        return isSuccess > 0;
+    }
+
+    /**
      * Deletes a player from the database given their playerID.
      * Calling this method mutates the database
      * @param playerID the ID of the player whose name we want to change.

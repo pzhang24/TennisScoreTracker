@@ -3,6 +3,7 @@ package com.example.tennisscoretracker.match.match_play;
 public class TennisSet {
 
     private static final int gamesNeededToWin = 6;
+    private static final int gamesNeededToWinWithTiebreak = 7;
 
     private int winningTeamNumber;
     private static final int TEAM1_NUMBER = 1;
@@ -15,6 +16,8 @@ public class TennisSet {
     private static final int TIEBREAK_GAME_NUMBER = 13;
     private int gamesCompleted;
 
+    //Represents the currentTennisGame - if the set is over,
+    // this will reference the last TennisGame played in the set
     private TennisGame currentTennisGame;
 
     public TennisSet() {
@@ -48,23 +51,33 @@ public class TennisSet {
 
         int tennisGameResult = this.currentTennisGame.addPointForTeam(teamNumber);
 
+        //Code to update the state of our set -> number of games won by a team, and games completed in total.
         switch(tennisGameResult) {
             //If neither team wins a game after winning a point, nothing here should be executed
             case(TEAM1_NUMBER):
                 this.gamesWon_Team1++;
                 this.gamesCompleted++;
-                this.currentTennisGame = (this.gamesCompleted == MAX_REGULAR_GAME_NUMBER) ?
-                        new TennisGame(true) : new TennisGame(false);
                 break;
             case(TEAM2_NUMBER):
                 this.gamesWon_Team2++;
                 this.gamesCompleted++;
-                this.currentTennisGame = (this.gamesCompleted == MAX_REGULAR_GAME_NUMBER) ?
-                        new TennisGame(true) : new TennisGame(false);
                 break;
         }
 
+        //Code to replace currentTennisGame if we need to begin a new tennis game
+        if(tennisGameResult != 0) {
+            int afterSetWinner = checkForWinner();
 
+            //If a game has been won, but the set has not been won yet,
+            // replace the currentTennisGame with a new one
+            if(afterSetWinner == 0) {
+                if(this.gamesCompleted == MAX_REGULAR_GAME_NUMBER) {
+                    this.currentTennisGame = new TennisGame(true);
+                } else if (this.gamesCompleted < MAX_REGULAR_GAME_NUMBER) {
+                    this.currentTennisGame = new TennisGame(false);
+                }
+            }
+        }
 
         return checkForWinner();
     }
@@ -74,16 +87,32 @@ public class TennisSet {
      * @param teamNumber Either 1 for team1 or 2 for team2. Pass in 0 for both teams score.
      * @return the current score.
      * If both team's score is requested, a String concatenating their scores (with a hyphen "-" in between) is returned.
+     * If the tieBreak game has been completed,
+     *  the tieBreak game score is also included in the set score, ie. 7(8)-6(6)
      */
     public String getSetScore(int teamNumber) {
+        boolean includeTieBreakScore = isTieBreakGameFinished();
+
+        String team1Score_String = includeTieBreakScore ? (gamesWon_Team1 + "("
+                + currentTennisGame.getGameScore(1) + ")")
+                : Integer.toString(gamesWon_Team1);
+
+        String team2Score_String = includeTieBreakScore ? (gamesWon_Team2 + "("
+                + currentTennisGame.getGameScore(2) + ")")
+                : Integer.toString(gamesWon_Team2);
+
         switch(teamNumber) {
             case(1):
-                return Integer.toString(gamesWon_Team1);
+                return team1Score_String;
             case(2):
-                return Integer.toString(gamesWon_Team2);
+                return team2Score_String;
             default:
-                return gamesWon_Team1 + "-" + gamesWon_Team2;
+                return team1Score_String + "-" + team2Score_String;
         }
+    }
+
+    private boolean isTieBreakGameFinished() {
+        return gamesCompleted == TIEBREAK_GAME_NUMBER;
     }
 
     /**

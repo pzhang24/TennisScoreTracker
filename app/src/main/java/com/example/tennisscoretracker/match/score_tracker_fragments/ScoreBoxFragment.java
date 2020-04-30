@@ -1,6 +1,7 @@
 package com.example.tennisscoretracker.match.score_tracker_fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,14 +18,30 @@ import com.example.tennisscoretracker.R;
  */
 public class ScoreBoxFragment extends Fragment {
 
-    //TODO: Add methods/fields to input a score into the fragment... DONE?
+    private static final String TOPTEXT_KEY = "top_text";
+    private static final String BOTTOMTEXT_KEY = "bottom_text";
+
+    //TODO: Add methods/fields to input a score into the fragment... DONE? NOT DONE :(((
+    public static ScoreBoxFragment newInstance(String topText, String bottomText) {
+        ScoreBoxFragment fragment = new ScoreBoxFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(TOPTEXT_KEY, topText);
+        bundle.putString(BOTTOMTEXT_KEY, bottomText);
+        fragment.setArguments(bundle);
+
+        return fragment;
+    }
 
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_scorebox, container, false);
+        View v = inflater.inflate(R.layout.fragment_scorebox, container, false);
+
+        setText(v, getArguments().getString(TOPTEXT_KEY), getArguments().getString(BOTTOMTEXT_KEY));
+
+        return v;
     }
 
 
@@ -33,9 +50,10 @@ public class ScoreBoxFragment extends Fragment {
      * @param topText text to set for top TextView
      * @param bottomText text to set for bottom TextView
      */
-    public void setText(String topText, String bottomText) {
-        TextView topTextView = this.getView().findViewById(R.id.fragment_scorebox_TOP_TEXTVIEW);
-        TextView bottomTextView = this.getView().findViewById(R.id.fragment_scorebox_BOTTOM_TEXTVIEW);
+    private void setText(View v, String topText, String bottomText) {
+
+        TextView topTextView = v.findViewById(R.id.fragment_scorebox_TOP_TEXTVIEW);
+        TextView bottomTextView = v.findViewById(R.id.fragment_scorebox_BOTTOM_TEXTVIEW);
 
         topTextView.setText(topText);
         bottomTextView.setText(bottomText);
