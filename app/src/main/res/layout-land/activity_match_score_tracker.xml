@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#339980"
     tools:context=".match.MatchScoreTrackerActivity">
 
     <TextView
@@ -23,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="28sp"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="@id/activity_match_score_tracker_BEST_OF_SETS_TEXTVIEW"
         app:layout_constraintTop_toBottomOf="@id/activity_match_score_tracker_BEST_OF_SETS_TEXTVIEW" />
 
@@ -38,8 +40,6 @@
         android:id="@+id/activity_match_score_tracker_SCOREBOX_ONE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         app:layout_constraintStart_toEndOf="@id/activity_match_score_tracker_PLAYER_SCOREBOX"
         app:layout_constraintTop_toTopOf="@+id/activity_match_score_tracker_PLAYER_SCOREBOX" />
 
@@ -47,8 +47,6 @@
         android:id="@+id/activity_match_score_tracker_SCOREBOX_TWO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         app:layout_constraintStart_toEndOf="@+id/activity_match_score_tracker_SCOREBOX_ONE"
         app:layout_constraintTop_toTopOf="@+id/activity_match_score_tracker_PLAYER_SCOREBOX" />
 
@@ -56,8 +54,6 @@
         android:id="@+id/activity_match_score_tracker_SCOREBOX_THREE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         app:layout_constraintStart_toEndOf="@+id/activity_match_score_tracker_SCOREBOX_TWO"
         app:layout_constraintTop_toTopOf="@+id/activity_match_score_tracker_PLAYER_SCOREBOX" />
 
@@ -65,8 +61,6 @@
         android:id="@+id/activity_match_score_tracker_SCOREBOX_FOUR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         app:layout_constraintStart_toEndOf="@+id/activity_match_score_tracker_SCOREBOX_THREE"
         app:layout_constraintTop_toTopOf="@+id/activity_match_score_tracker_PLAYER_SCOREBOX" />
 
@@ -74,8 +68,6 @@
         android:id="@+id/activity_match_score_tracker_SCOREBOX_FIVE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         app:layout_constraintStart_toEndOf="@+id/activity_match_score_tracker_SCOREBOX_FOUR"
         app:layout_constraintTop_toTopOf="@+id/activity_match_score_tracker_PLAYER_SCOREBOX" />
 
@@ -83,8 +75,6 @@
         android:id="@+id/activity_match_score_tracker_SCOREBOX_SIX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         app:layout_constraintStart_toEndOf="@+id/activity_match_score_tracker_SCOREBOX_FIVE"
         app:layout_constraintTop_toTopOf="@+id/activity_match_score_tracker_PLAYER_SCOREBOX" />
 
@@ -92,12 +82,12 @@
         android:id="@+id/activity_match_score_tracker_TEAM_ONE_PLAYER_ACTION_LAYOUT"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
         android:layout_marginLeft="75dp"
         android:layout_marginStart="75dp"
+        android:layout_marginBottom="75dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activity_match_score_tracker_PLAYER_SCOREBOX">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <FrameLayout
             android:id="@+id/activity_match_score_tracker_PLAYER_ACTION_BOX_ONE"
@@ -118,7 +108,7 @@
         android:layout_marginEnd="75dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/activity_match_score_tracker_TEAM_ONE_PLAYER_ACTION_LAYOUT">
+        app:layout_constraintBottom_toBottomOf="@+id/activity_match_score_tracker_TEAM_ONE_PLAYER_ACTION_LAYOUT">
 
         <FrameLayout
             android:id="@+id/activity_match_score_tracker_PLAYER_ACTION_BOX_THREE"

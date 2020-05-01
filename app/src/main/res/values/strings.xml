@@ -47,4 +47,9 @@
     <string name="fragment_player_action_DOUBLE_FAULT_BUTTON">DOUBLE FAULT</string>
     <string name="fragment_player_action_FORCED_ERROR_BUTTON">FORCED ERR.</string>
     <string name="fragment_player_action_UNFORCED_ERROR_BUTTON">UNFORCED ERR.</string>
+    <string name="MatchScoreTrackerActivity_MatchCompleted">Match Completed</string>
+    <string name="MatchScoreTrackerActivity_BEST_OF_1_SET_TEXTVIEW">Best Of 1 Set</string>
+    <string name="MatchScoreTrackerActivity_BEST_OF_3_SETS_TEXTVIEW">Best Of 3 Sets</string>
+    <string name="MatchScoreTrackerActivity_BEST_OF_5_SETS_TEXTVIEW">Best Of 5 Sets</string>
+    <string name="MatchScoreTrackerActivity_ERROR_BEST_OF_SETS_TEXTVIEW">Error in BestOfSetsTextView</string>
 </resources>

@@ -171,7 +171,7 @@ public class TennisMatch {
      * Returns the maximum number of sets to be played, ie. the best of ___ sets
      * @return the max number of sets to be played
      */
-    public int getTotalNumberOfSets() {
+    public int getMaxNumberOfSets() {
         return bestOfSets;
     }
 

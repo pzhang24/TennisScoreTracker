@@ -2,22 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fragment_scorebox">
+    android:id="@+id/fragment_game_scorebox">
 
     <TextView
-        android:id="@+id/fragment_scorebox_TOP_TEXTVIEW"
+        android:id="@+id/fragment_game_scorebox_TOP_TEXTVIEW"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:textSize="40sp"
+        style="@style/ScoreBoard_GameTextView"
         />
 
     <TextView
-        android:id="@+id/fragment_scorebox_BOTTOM_TEXTVIEW"
+        android:id="@+id/fragment_game_scorebox_BOTTOM_TEXTVIEW"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:textSize="40sp"
+        style="@style/ScoreBoard_GameTextView"
         />
 
 </LinearLayout>
