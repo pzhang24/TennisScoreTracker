@@ -8,43 +8,79 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
 
-
-    <Button
-        android:id="@+id/home_button_NEW_GAME"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/home_button_NEW_MATCH"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintWidth_percent="0.65"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.50" />
-
-    <Button
-        android:id="@+id/home_button_PLAYER_RECORDS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/home_button_PLAYER_RECORDS"
-        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_button_NEW_GAME"
-        app:layout_constraintVertical_bias="0.12" />
+        style="@style/Layout_BackgroundStyle"
+        >
 
-    <Button
-        android:id="@+id/home_button_QUIT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/home_button_QUIT"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.500"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_button_PLAYER_RECORDS"
-        app:layout_constraintVertical_bias="0.36" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/content_main_APP_TITLE_TEXTVIEW"
+            style="@style/MainActivityTitle_TextView"
+            android:id="@+id/content_main_APP_TITLE">
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/content_main_APP_TITLE"
+            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/home_button_NEW_GAME"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/home_button_NEW_MATCH"
+                style="@style/MainActivity_Button"/>
+
+            <TextView
+                android:id="@+id/home_NEW_GAME_INFO_TEXTVIEW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                style="@style/MainActivityInfo_TextView"
+                android:text="@string/home_NEW_GAME_INFO_TEXTVIEW"/>
+
+            <Button
+                android:id="@+id/home_button_PLAYER_RECORDS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/home_button_PLAYER_RECORDS"
+                style="@style/MainActivity_Button"/>
+            <TextView
+                android:id="@+id/home_PLAYER_RECORDS_INFO_TEXTVIEW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="20dp"
+                style="@style/MainActivityInfo_TextView"
+                android:text="@string/home_PLAYER_RECORDS_INFO_TEXTVIEW"/>
+
+        </LinearLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,8 +33,8 @@
     <string name="dialog_delete_player_WARNING_TEXTVIEW">All Player Data Will Be Erased!</string>
     <string name="player_records_VIEW_PLAYER_RECORDS_TEXTVIEW">PLAYERS</string>
     <string name="match_select_type_SELECT_TEXTVIEW">Select Match Type</string>
-    <string name="match_select_type_SINGLES_BUTTON">Singles</string>
-    <string name="match_select_type_DOUBLES_BUTTON">DOUBLES</string>
+    <string name="match_select_type_SINGLES_BUTTON">Singles (1 v 1)</string>
+    <string name="match_select_type_DOUBLES_BUTTON">Doubles (2 v 2)</string>
     <string name="match_player_select_HEADING_TEXTVIEW">Match Setup</string>
     <string name="fragment_singles_setup_Player_1_TEXTVIEW">Player 1:</string>
     <string name="fragment_singles_setup_Player_2_TEXTVIEW">Player 2:</string>
@@ -52,4 +52,7 @@
     <string name="MatchScoreTrackerActivity_BEST_OF_3_SETS_TEXTVIEW">Best Of 3 Sets</string>
     <string name="MatchScoreTrackerActivity_BEST_OF_5_SETS_TEXTVIEW">Best Of 5 Sets</string>
     <string name="MatchScoreTrackerActivity_ERROR_BEST_OF_SETS_TEXTVIEW">Error in BestOfSetsTextView</string>
+    <string name="content_main_APP_TITLE_TEXTVIEW">Tennis Score Tracker</string>
+    <string name="home_NEW_GAME_INFO_TEXTVIEW">Begin a new tennis match.</string>
+    <string name="home_PLAYER_RECORDS_INFO_TEXTVIEW">Create a new player, or browse the records of existing players.</string>
 </resources>
