@@ -112,7 +112,10 @@
         <item name="android:textSize">30sp</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:padding">20dp</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="android:paddingLeft">100dp</item>
+        <item name="android:paddingRight">100dp</item>
     </style>
 
 

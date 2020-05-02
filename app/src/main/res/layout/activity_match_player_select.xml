@@ -60,7 +60,7 @@
 
         <Button
             android:id="@+id/activity_match_player_select_BEGIN_MATCH_BUTTON"
-            android:layout_width="500dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:layout_marginBottom="50dp"
