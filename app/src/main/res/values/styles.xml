@@ -94,6 +94,28 @@
         <item name="android:textSize">28sp</item>
     </style>
 
+    <style name="Fragment_player_select_Background">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <style name="Fragment_player_select_TextView">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ActivityMatchPlayerSelect_Button">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">20dp</item>
+    </style>
+
+
 
 
 </resources>

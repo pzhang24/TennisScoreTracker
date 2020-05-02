@@ -2,48 +2,48 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    style="@style/Fragment_player_select_Background"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/fragment_singles_setup_Player_1_TEXTVIEW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:text="@string/fragment_singles_setup_Player_1_TEXTVIEW"
-        android:textSize="40sp"
+        style="@style/Fragment_player_select_TextView"
         />
 
     <Spinner
         android:id="@+id/fragment_singles_setup_Player_1_SPINNER"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginLeft="104dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@id/fragment_singles_setup_Player_1_TEXTVIEW"
-        app:layout_constraintTop_toTopOf="@id/fragment_singles_setup_Player_1_TEXTVIEW" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/fragment_singles_setup_Player_1_TEXTVIEW"
+        app:layout_constraintBottom_toBottomOf="@id/fragment_singles_setup_Player_1_TEXTVIEW" />
 
     <TextView
         android:id="@+id/fragment_singles_setup_Player_2_TEXTVIEW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         app:layout_constraintTop_toBottomOf="@id/fragment_singles_setup_Player_1_TEXTVIEW"
         app:layout_constraintStart_toStartOf="parent"
         android:text="@string/fragment_singles_setup_Player_2_TEXTVIEW"
-        android:textSize="40sp"
+        style="@style/Fragment_player_select_TextView"
         />
 
     <Spinner
         android:id="@+id/fragment_singles_setup_Player_2_SPINNER"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginLeft="104dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@id/fragment_singles_setup_Player_2_TEXTVIEW"
-        app:layout_constraintTop_toTopOf="@id/fragment_singles_setup_Player_2_TEXTVIEW" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/fragment_singles_setup_Player_2_TEXTVIEW"
+        app:layout_constraintBottom_toBottomOf="@id/fragment_singles_setup_Player_2_TEXTVIEW"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

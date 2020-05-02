@@ -162,6 +162,11 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
 
     }
 
+    @Override
+    public void onBackPressed() {
+        displayUnsavedQuitDialog();
+    }
+
     //--------------------------------------------------------------//
     //These methods configure/update the UI
 
@@ -467,6 +472,30 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
 
     }
 
+    private void displayUnsavedQuitDialog() {
+        String returnMessage = "Return To Main Menu? All Match Data Will Be Lost!";
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(returnMessage)
+                .setCancelable(true)
+                .setPositiveButton("Return To Main Menu", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Go back to main activity
+                        Intent intent = new Intent(MatchScoreTrackerActivity.this, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
 
 
     /**
@@ -645,7 +674,7 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(resultMessage.toString())
                 .setCancelable(false)
-                .setPositiveButton("Return to Main Menu", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Return To Main Menu", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //Go back to main activity

@@ -4,55 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/aleksandar_kyng_tenniscourtphoto"
+    android:background="@drawable/cool_tenniscourtphoto"
     tools:context=".match_setup.MatchPlayerSelectActivity">
 
     <include
         android:id="@+id/toolbar_match_player_select"
-        layout="@layout/toolbar_main"/>
+        layout="@layout/toolbar_main" />
 
-    <TextView
-        android:id="@+id/activity_match_player_select_SELECT_TEXTVIEW"
-        android:background="#FFFFFF"
-        android:layout_width="match_parent"
+    <LinearLayout
+        style="@style/Layout_BackgroundStyle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_match_player_select"
-        android:text="@string/match_player_select_HEADING_TEXTVIEW"
-        android:textSize="40sp"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        />
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/activity_match_player_select_SELECT_TEXTVIEW"
-        android:layout_marginTop="100dp"
-        android:id="@+id/fragment_player_select_CONTAINER1"/>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/fragment_player_select_CONTAINER1"
-        android:layout_marginTop="100dp"
-        android:id="@+id/fragment_player_select_CONTAINER2"/>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/fragment_player_select_CONTAINER2"
-        android:layout_marginTop="100dp"
-        android:id="@+id/fragment_player_select_CONTAINER_SETS"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/fragment_player_select_CONTAINER_SETS"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.85"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="100dp"
-        android:text="@string/activity_match_player_select_BUTTON_BEGIN_MATCH"
-        android:id="@+id/activity_match_player_select_BEGIN_MATCH_BUTTON"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/activity_match_player_select_SELECT_TEXTVIEW"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/NonMainActivityTitle_TextView"
+            android:text="@string/match_player_select_HEADING_TEXTVIEW"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_match_player_select" />
+
+        <FrameLayout
+            android:id="@+id/fragment_player_select_CONTAINER1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintTop_toBottomOf="@id/activity_match_player_select_SELECT_TEXTVIEW" />
+
+        <FrameLayout
+            android:id="@+id/fragment_player_select_CONTAINER2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintTop_toBottomOf="@id/fragment_player_select_CONTAINER1" />
+
+        <FrameLayout
+            android:id="@+id/fragment_player_select_CONTAINER_SETS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintTop_toBottomOf="@id/fragment_player_select_CONTAINER2" />
+
+        <Button
+            android:id="@+id/activity_match_player_select_BEGIN_MATCH_BUTTON"
+            android:layout_width="500dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:text="@string/activity_match_player_select_BUTTON_BEGIN_MATCH"
+            android:layout_gravity="center"
+            style="@style/ActivityMatchPlayerSelect_Button"
+            app:layout_constraintTop_toBottomOf="@id/fragment_player_select_CONTAINER_SETS" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
