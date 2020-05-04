@@ -602,7 +602,7 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
         alertDialog.show();
 
         TextView text = alertDialog.findViewById(android.R.id.message);
-        text.setTextSize(20);
+        text.setTextSize(16);
 
     }
 
