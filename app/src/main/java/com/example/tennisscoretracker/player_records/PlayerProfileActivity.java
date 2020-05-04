@@ -3,7 +3,6 @@ package com.example.tennisscoretracker.player_records;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,7 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.tennisscoretracker.MainActivity;
 import com.example.tennisscoretracker.R;
 import com.example.tennisscoretracker.player_database.PlayerDBHelper;
 import com.example.tennisscoretracker.player_database.PlayerDoesNotExistException;
@@ -117,8 +115,8 @@ public class PlayerProfileActivity extends AppCompatActivity {
     }
 
     private void configureDeletePlayerButton() {
-        Button deletePlayerButton = findViewById(R.id.player_profile_DELETE_PLAYER_BUTTON);
-        deletePlayerButton.setOnClickListener(new View.OnClickListener() {
+        Button deleteButton = findViewById(R.id.player_profile_DELETE_PLAYER_BUTTON);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder =
@@ -159,17 +157,17 @@ public class PlayerProfileActivity extends AppCompatActivity {
 
 
     private void configureNameTextField(String name){
-        TextView nameTextView = findViewById(R.id.player_profile_PLAYER_NAME_DISPLAY_TEXTVIEW);
-        nameTextView.setText(name);
+        TextView textView = findViewById(R.id.player_profile_PLAYER_NAME_DISPLAY_TEXTVIEW);
+        textView.setText(name);
     }
 
     private void configureWinsTextField(int wins){
-        TextView nameTextView = findViewById(R.id.player_profile_PLAYER_WINS_DISPLAY_TEXTVIEW);
-        nameTextView.setText(String.valueOf(wins));
+        TextView textView = findViewById(R.id.player_profile_PLAYER_WINS_DISPLAY_TEXTVIEW);
+        textView.setText(String.valueOf(wins));
     }
 
     private void configureLossesTextField(int losses) {
-        TextView nameTextView = findViewById(R.id.player_profile_PLAYER_LOSSES_DISPLAY_TEXTVIEW);
-        nameTextView.setText(String.valueOf(losses));
+        TextView textView = findViewById(R.id.player_profile_PLAYER_LOSSES_DISPLAY_TEXTVIEW);
+        textView.setText(String.valueOf(losses));
     }
 }

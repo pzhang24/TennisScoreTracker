@@ -31,7 +31,6 @@ public class MatchPlayerSelectActivity extends AppCompatActivity {
     public static final String NUM_SETS_EXTRA = "num_sets";
     public static final String IS_DOUBLES_EXTRA = "is_doubles";
 
-    private Button beginMatchButton;
     private DoublesSetupFragment doublesSetupFragmentTeam1;
     private DoublesSetupFragment doublesSetupFragmentTeam2;
     private SinglesSetupFragment singlesSetupFragment;
@@ -86,8 +85,8 @@ public class MatchPlayerSelectActivity extends AppCompatActivity {
      * Initialize the button to begin a match.
      */
     private void initializePlayMatchButton() {
-        beginMatchButton = findViewById(R.id.activity_match_player_select_BEGIN_MATCH_BUTTON);
-        beginMatchButton.setOnClickListener(new View.OnClickListener() {
+        Button beginButton = findViewById(R.id.activity_match_player_select_BEGIN_MATCH_BUTTON);
+        beginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

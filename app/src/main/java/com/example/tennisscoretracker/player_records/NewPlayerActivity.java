@@ -10,8 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.tennisscoretracker.R;
-import com.example.tennisscoretracker.player_database.PlayerDBHelper;
 import com.example.tennisscoretracker.player_database.PlayerNameAlreadyExistsException;
+import com.example.tennisscoretracker.player_database.PlayerDBHelper;
 import com.example.tennisscoretracker.player_database.TooManyPlayersException;
 
 public class NewPlayerActivity extends AppCompatActivity {
@@ -77,14 +77,14 @@ public class NewPlayerActivity extends AppCompatActivity {
                             Toast.makeText(NewPlayerActivity.this, message, Toast.LENGTH_LONG).show();
                         }
 
-                    } catch (PlayerNameAlreadyExistsException alreadyExistsException) {
+                    } catch (PlayerNameAlreadyExistsException exception) {
 
-                        String message = alreadyExistsException.getMessage();
+                        String message = exception.getMessage();
                         Toast.makeText(NewPlayerActivity.this, message, Toast.LENGTH_LONG).show();
 
-                    } catch (TooManyPlayersException tooManyPlayersException) {
+                    } catch (TooManyPlayersException exception) {
 
-                        String message = tooManyPlayersException.getMessage();
+                        String message = exception.getMessage();
                         Toast.makeText(NewPlayerActivity.this, message, Toast.LENGTH_LONG).show();
                     }
 
