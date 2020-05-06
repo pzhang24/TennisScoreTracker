@@ -10,4 +10,5 @@
     <color name="colorClayRed">#AD5049</color>
     <color name="colorClayRedLight">#DCA69F</color>
     <color name="colorClayRedLightSaturated">#f0968b</color>
+    <color name="colorHeadingGrey">#d3d3d3</color>
 </resources>

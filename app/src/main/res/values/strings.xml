@@ -16,11 +16,11 @@
     <string name="player_profile_PLACEHOLDER_HEADING">Placeholder for Heading</string>
     <string name="player_profile_PLACEHOLDER_DISPLAY">Display Placeholder</string>
     <string name="player_profile_PLAYER_NAME_HEADING_TEXTVIEW">PLAYER NAME</string>
-    <string name="player_profile_PLAYER_NAME_DISPLAY_TEXTVIEW">PLACEHOLDER_NAME</string>
+    <string name="player_profile_PLAYER_NAME_DISPLAY_TEXTVIEW">NAME</string>
     <string name="player_profile_PLAYER_WINS_HEADING_TEXTVIEW">WINS</string>
-    <string name="player_profile_PLAYER_WINS_DISPLAY_TEXTVIEW">PLACEHOLDER WINS</string>
+    <string name="player_profile_PLAYER_WINS_DISPLAY_TEXTVIEW">WINS</string>
     <string name="player_profile_PLAYER_LOSSES_HEADING_TEXTVIEW">LOSSES</string>
-    <string name="player_profile_PLAYER_LOSSES_DISPLAY_TEXTVIEW">PLACEHOLDER LOSSES</string>
+    <string name="player_profile_PLAYER_LOSSES_DISPLAY_TEXTVIEW">LOSSES</string>
     <string name="player_profile_DELETE_PLAYER_BUTTON">Delete Player</string>
     <string name="player_profile_CHANGE_PLAYER_NAME_BUTTON">Change Player Name</string>
     <string name="dialog_update_player_name_CHANGE_NAME_TEXTVIEW">Change Player Name</string>

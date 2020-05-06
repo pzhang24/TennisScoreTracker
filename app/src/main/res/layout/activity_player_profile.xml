@@ -4,37 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/cool_tenniscourtphoto"
     tools:context=".player_records.PlayerProfileActivity">
 
     <include
         android:id="@+id/toolbar_player_profile"
         layout="@layout/toolbar_main"/>
 
-    <TextView
-        android:id="@+id/player_profile_PLAYER_PROFILE_HEADING_TEXTVIEW"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/Layout_BackgroundStyle"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginLeft="88dp"
-        android:layout_marginEnd="88dp"
-        android:layout_marginRight="88dp"
-        android:text="@string/player_profile_PLAYER_PROFILE_HEADING_TEXTVIEW"
-        android:textSize="40sp"
-        android:textStyle="bold"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.75"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_player_profile" />
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    <TextView
+        android:id="@+id/player_profile_PLAYER_PROFILE_HEADING_TEXTVIEW"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/player_profile_PLAYER_PROFILE_HEADING_TEXTVIEW"
+        style="@style/NonMainActivityTitle_TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/player_profile_PLAYER_NAME_HEADING_TEXTVIEW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:text="@string/player_profile_PLAYER_NAME_HEADING_TEXTVIEW"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        style="@style/Regular_Heading_TextView"
         app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_PROFILE_HEADING_TEXTVIEW"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -43,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/player_profile_PLAYER_NAME_DISPLAY_TEXTVIEW"
-        android:textSize="24sp"
+        style="@style/Regular_Text_TextView"
         app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_NAME_HEADING_TEXTVIEW"
         app:layout_constraintStart_toStartOf="@id/player_profile_PLAYER_NAME_HEADING_TEXTVIEW" />
 
@@ -53,8 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/player_profile_PLAYER_WINS_HEADING_TEXTVIEW"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        style="@style/Regular_Heading_TextView"
         app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_NAME_DISPLAY_TEXTVIEW"
         app:layout_constraintStart_toStartOf="@id/player_profile_PLAYER_NAME_HEADING_TEXTVIEW" />
 
@@ -63,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/player_profile_PLAYER_WINS_DISPLAY_TEXTVIEW"
-        android:textSize="24sp"
+        style="@style/Regular_Text_TextView"
         app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_WINS_HEADING_TEXTVIEW"
         app:layout_constraintStart_toStartOf="@id/player_profile_PLAYER_NAME_HEADING_TEXTVIEW" />
 
@@ -73,8 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/player_profile_PLAYER_LOSSES_HEADING_TEXTVIEW"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        style="@style/Regular_Heading_TextView"
         app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_WINS_DISPLAY_TEXTVIEW"
         app:layout_constraintStart_toStartOf="@id/player_profile_PLAYER_NAME_HEADING_TEXTVIEW" />
 
@@ -83,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/player_profile_PLAYER_LOSSES_DISPLAY_TEXTVIEW"
-        android:textSize="24sp"
+        style="@style/Regular_Text_TextView"
         app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_LOSSES_HEADING_TEXTVIEW"
         app:layout_constraintStart_toStartOf="@id/player_profile_PLAYER_NAME_HEADING_TEXTVIEW" />
 
@@ -91,27 +95,29 @@
         android:id="@+id/player_profile_CHANGE_PLAYER_NAME_BUTTON"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/player_profile_CHANGE_PLAYER_NAME_BUTTON"
-        android:textSize="12sp"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/player_profile_CHANGE_PLAYER_NAME_BUTTON"
+        style="@style/ActivityPlayerProfile_Button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_LOSSES_DISPLAY_TEXTVIEW" />
+        app:layout_constraintEnd_toStartOf="@id/player_profile_DELETE_PLAYER_BUTTON"
+        app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_LOSSES_DISPLAY_TEXTVIEW"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
         android:id="@+id/player_profile_DELETE_PLAYER_BUTTON"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        style="@style/ActivityPlayerProfile_Button"
         android:text="@string/player_profile_DELETE_PLAYER_BUTTON"
-        android:textSize="12sp"
-        app:layout_constraintTop_toBottomOf="@id/player_profile_CHANGE_PLAYER_NAME_BUTTON"
+        app:layout_constraintTop_toBottomOf="@id/player_profile_PLAYER_LOSSES_DISPLAY_TEXTVIEW"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/player_profile_CHANGE_PLAYER_NAME_BUTTON" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

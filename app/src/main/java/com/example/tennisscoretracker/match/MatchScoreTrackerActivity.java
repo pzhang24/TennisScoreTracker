@@ -387,7 +387,7 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
     }
 
     private void displayUnsavedQuitDialog() {
-        String returnMessage = "Return To Main Menu?\n All Match Data Will Be Lost!";
+        String returnMessage = "Return To Main Menu?\nAll Match Data Will Be Lost!";
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(returnMessage)
                 .setCancelable(true)

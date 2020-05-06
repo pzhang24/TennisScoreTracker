@@ -4,24 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/cool_tenniscourtphoto"
     tools:context=".player_records.NewPlayerActivity">
 
     <include
         android:id="@+id/toolbar_new_player"
         layout="@layout/toolbar_main"/>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/Layout_BackgroundStyle"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.75"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
     <TextView
         android:id="@+id/new_player_CREATE_PLAYER_TITLE"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_new_player"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/NonMainActivityTitle_TextView"
         android:text="@string/new_player_CREATE_PLAYER_TITLE"
-        android:textStyle="bold"
-        android:textSize="30sp"
         />
 
     <TextView
@@ -31,30 +39,38 @@
         app:layout_constraintStart_toStartOf="@id/new_player_CREATE_PLAYER_TITLE"
         app:layout_constraintTop_toBottomOf="@id/new_player_CREATE_PLAYER_TITLE"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:text="@string/new_player_PLAYER_NAME_TEXTVIEW"
-        android:textSize="24sp"
+        style="@style/Regular_Heading_TextView"
         />
 
-    <EditText
-        android:id="@+id/new_player_PLAYER_NAME_EDITTEXT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/new_player_NAME_HINT"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@id/new_player_CREATE_PLAYER_TITLE"
-        app:layout_constraintTop_toBottomOf="@id/new_player_PLAYER_NAME_TEXTVIEW" />
+        <EditText
+            android:id="@+id/new_player_PLAYER_NAME_EDITTEXT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/new_player_NAME_HINT"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@id/new_player_PLAYER_NAME_TEXTVIEW"
+            app:layout_constraintTop_toBottomOf="@id/new_player_PLAYER_NAME_TEXTVIEW" />
 
     <Button
         android:id="@+id/new_player_ADD_PLAYER_BUTTON"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/new_player_ADD_PLAYER_BUTTON"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@id/new_player_CREATE_PLAYER_TITLE"
-        app:layout_constraintTop_toBottomOf="@+id/new_player_PLAYER_NAME_EDITTEXT" />
+        style="@style/ActivityMatchPlayerSelect_Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_player_PLAYER_NAME_EDITTEXT"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

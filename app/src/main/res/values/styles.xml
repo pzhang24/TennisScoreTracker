@@ -118,7 +118,26 @@
         <item name="android:paddingRight">100dp</item>
     </style>
 
+    <style name="ActivityPlayerProfile_Button">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+    </style>
 
+    <style name="Regular_Heading_TextView">
+        <item name="android:textColor">@color/colorHeadingGrey</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
-
+    <style name="Regular_Text_TextView">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
