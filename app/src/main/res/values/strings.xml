@@ -31,7 +31,7 @@
     <string name="dialog_delete_player_CANCEL_BUTTON">Cancel</string>
     <string name="dialog_delete_player_DELETE_BUTTON">Delete</string>
     <string name="dialog_delete_player_WARNING_TEXTVIEW">All Player Data Will Be Erased!</string>
-    <string name="player_records_VIEW_PLAYER_RECORDS_TEXTVIEW">PLAYERS</string>
+    <string name="player_records_VIEW_PLAYER_RECORDS_TEXTVIEW">PLAYER LIST</string>
     <string name="match_select_type_SELECT_TEXTVIEW">Select Match Type</string>
     <string name="match_select_type_SINGLES_BUTTON">Singles (1 v 1)</string>
     <string name="match_select_type_DOUBLES_BUTTON">Doubles (2 v 2)</string>
