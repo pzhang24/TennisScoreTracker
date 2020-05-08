@@ -1,6 +1,5 @@
 package com.example.tennisscoretracker.match.match_team;
 
-import com.example.tennisscoretracker.match.match_team.TennisPlayer;
 
 public class TennisTeam {
 
@@ -13,10 +12,11 @@ public class TennisTeam {
 
     /**
      * Creates a new doubles team.
+     *
      * @param player1Name name of tennisPlayer1
-     * @param player1ID ID of tennisPlayer1
+     * @param player1ID   ID of tennisPlayer1
      * @param player2Name name of tennisPlayer2
-     * @param player2ID ID of tennisPlayer2
+     * @param player2ID   ID of tennisPlayer2
      */
     public TennisTeam(String player1Name, int player1ID, String player2Name, int player2ID) {
         format = FORMAT_DOUBLES;
@@ -27,8 +27,9 @@ public class TennisTeam {
 
     /**
      * Creates a new singles team - ie. a team containing a single player.
+     *
      * @param playerName name of player
-     * @param playerID ID of player
+     * @param playerID   ID of player
      */
     public TennisTeam(String playerName, int playerID) {
         format = FORMAT_SINGLES;
@@ -38,6 +39,7 @@ public class TennisTeam {
 
     /**
      * Gets the name of tennisPlayer1 on this team.
+     *
      * @return a String representing tennisPlayer1's name.
      */
     public String getPlayer1Name() {
@@ -46,6 +48,7 @@ public class TennisTeam {
 
     /**
      * Gets the ID of tennisPlayer1 on this team.
+     *
      * @return an int representing tennisPlayer1's ID.
      */
     public int getPlayer1ID() {
@@ -54,6 +57,7 @@ public class TennisTeam {
 
     /**
      * Gets the name of tennisPlayer2 on this team, if tennisPlayer2 exists.
+     *
      * @return a String representing tennisPlayer2's name.
      * If tennisPlayer2 does not exist (this.isDoublesTeam() returns false), return null.
      */
@@ -63,6 +67,7 @@ public class TennisTeam {
 
     /**
      * Gets the ID of tennisPlayer2 on this team, if tennisPlayer2 exists.
+     *
      * @return an int representing tennisPlayer2's ID.
      * If tennisPlayer2 does not exist (ie this.isDoublesTeam() returns false), return -1.
      */
@@ -73,6 +78,7 @@ public class TennisTeam {
     /**
      * Gets the combined name of both players if this team is a doubles team,
      * or just tennisPlayer1's name if this team is a singles team.
+     *
      * @return either both player's names in the format "player1Name/player2Name" if team is a doubles team,
      * or only the name of tennisPlayer1 if this team is a singles team.
      */
@@ -85,6 +91,7 @@ public class TennisTeam {
 
     /**
      * Returns whether this team is a doubles or singles team
+     *
      * @return true if doubles, false if singles.
      */
     public boolean isDoublesTeam() {

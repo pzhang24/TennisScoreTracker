@@ -80,7 +80,7 @@
 
     <LinearLayout
         android:id="@+id/activity_match_score_tracker_TEAM_ONE_PLAYER_ACTION_LAYOUT"
-        android:layout_width="400dp"
+        android:layout_width="450dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="75dp"
         android:layout_marginStart="75dp"
@@ -102,7 +102,7 @@
 
     <LinearLayout
         android:id="@+id/activity_match_score_tracker_TEAM_TWO_PLAYER_ACTION_LAYOUT"
-        android:layout_width="400dp"
+        android:layout_width="450dp"
         android:layout_height="wrap_content"
         android:layout_marginRight="75dp"
         android:layout_marginEnd="75dp"

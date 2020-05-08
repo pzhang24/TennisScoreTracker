@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#008577</color>
+    <color name="colorPrimarySlightlyTranslucent">#E8008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorPrimaryDarkTranslucent">#AA00574B</color>
     <color name="colorAccent">#D81B60</color>
@@ -8,7 +9,10 @@
     <color name="colorScoreBoardYellowGreyTone">#c4c4bb</color>
     <color name="colorScoreTrackerBackgroundGreen">#339980</color>
     <color name="colorClayRed">#AD5049</color>
+    <color name="colorClayRedTranslucent">#88AD5049</color>
     <color name="colorClayRedLight">#DCA69F</color>
     <color name="colorClayRedLightSaturated">#f0968b</color>
     <color name="colorHeadingGrey">#d3d3d3</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorWhiteSlightlyTranslucent">#DDFFFFFF</color>
 </resources>

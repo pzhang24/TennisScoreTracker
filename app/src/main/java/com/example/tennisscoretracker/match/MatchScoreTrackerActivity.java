@@ -39,14 +39,6 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
 
     private TennisMatch tennisMatch;
 
-    //----------------------------//
-
-    //PlayerActionFragment fields
-
-    private PlayerActionFragment team1Player1_ActionFragment;
-    private PlayerActionFragment team1Player2_ActionFragment;
-    private PlayerActionFragment team2Player1_ActionFragment;
-    private PlayerActionFragment team2Player2_ActionFragment;
 
     //---------------------------//
 
@@ -156,27 +148,27 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
      * Configures the BestOfSetsTextView based on whether the match is best of 1, 3, or 5 sets.
      */
     private void configureBestOfSetsTextView() {
-        TextView bestOfSets = findViewById(R.id.activity_match_score_tracker_BEST_OF_SETS_TEXTVIEW);
-        int maxNumberOfSets = tennisMatch.getMaxNumberOfSets();
+        TextView textView = findViewById(R.id.activity_match_score_tracker_BEST_OF_SETS_TEXTVIEW);
+        int maxSets = tennisMatch.getMaxNumberOfSets();
 
-        switch(maxNumberOfSets) {
+        switch(maxSets) {
             case(1):
-                bestOfSets.setText(getResources().getString(
+                textView.setText(getResources().getString(
                         R.string.MatchScoreTrackerActivity_BEST_OF_1_SET_TEXTVIEW));
                 break;
             case(3):
-                bestOfSets.setText(getResources().getString(
+                textView.setText(getResources().getString(
                         R.string.MatchScoreTrackerActivity_BEST_OF_3_SETS_TEXTVIEW));
                 break;
             case(5):
-                bestOfSets.setText(getResources().getString(
+                textView.setText(getResources().getString(
                         R.string.MatchScoreTrackerActivity_BEST_OF_5_SETS_TEXTVIEW));
                 break;
             default:
-                bestOfSets.setText(getResources().getString(
+                textView.setText(getResources().getString(
                         R.string.MatchScoreTrackerActivity_ERROR_BEST_OF_SETS_TEXTVIEW));
                 Log.d(MatchScoreTrackerActivity.class.getSimpleName(),
-                        "Error in BestOfSetsTextView: maxNumberOfSets = " + maxNumberOfSets);
+                        "Error in BestOfSetsTextView: maxSets = " + maxSets);
         }
     }
 
@@ -184,12 +176,11 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
      * Update the TextView displaying the current set number
      */
     private void updateCurrentSetTextView() {
-        TextView currentSetNum = findViewById(R.id.activity_match_score_tracker_CURRENT_SET_TEXTVIEW);
-        if (tennisMatch.getCurrentSetNumber() == -1) {
-            currentSetNum.setText(getResources().getString(R.string.MatchScoreTrackerActivity_MatchCompleted));
-        } else {
-            currentSetNum.setText("Current Set: " + tennisMatch.getCurrentSetNumber());
-        }
+        TextView textView = findViewById(R.id.activity_match_score_tracker_CURRENT_SET_TEXTVIEW);
+        String matchCompletedMsg = getResources().getString(R.string.MatchScoreTrackerActivity_MatchCompleted);
+
+        textView.setText((tennisMatch.isMatchFinished()) ? matchCompletedMsg :
+                "Current Set: " + tennisMatch.getCurrentSetNumber());
     }
 
     /**
@@ -214,35 +205,31 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
 
-        team1Player1_ActionFragment =
-                PlayerActionFragment.newInstance(TEAM_1, PLAYER_1,
-                        tennisMatch.getTennisTeam1().getPlayer1Name());
-        team2Player1_ActionFragment =
-                PlayerActionFragment.newInstance(TEAM_2, PLAYER_1,
-                        tennisMatch.getTennisTeam2().getPlayer1Name());
+        PlayerActionFragment team1Player1_Fragment = PlayerActionFragment.newInstance(TEAM_1, PLAYER_1,
+                tennisMatch.getTennisTeam1().getPlayer1Name());
+        PlayerActionFragment team2Player1_Fragment = PlayerActionFragment.newInstance(TEAM_2, PLAYER_1,
+                tennisMatch.getTennisTeam2().getPlayer1Name());
 
         //Box One is Top Left, Box Two is Bottom Left
         //Box Three is Top Right, Box Four is Bottom Right
 
         ft.add(R.id.activity_match_score_tracker_PLAYER_ACTION_BOX_ONE,
-                team1Player1_ActionFragment);
+                team1Player1_Fragment);
         ft.add(R.id.activity_match_score_tracker_PLAYER_ACTION_BOX_THREE,
-                team2Player1_ActionFragment);
+                team2Player1_Fragment);
 
 
         //Also need to construct fragments for player2 on both teams if the match format is Doubles
         if (tennisMatch.isDoubles()) {
-            team1Player2_ActionFragment =
-                    PlayerActionFragment.newInstance(TEAM_1, PLAYER_2,
-                            tennisMatch.getTennisTeam1().getPlayer2Name());
-            team2Player2_ActionFragment =
-                    PlayerActionFragment.newInstance(TEAM_2, PLAYER_2,
-                            tennisMatch.getTennisTeam2().getPlayer2Name());
+            PlayerActionFragment team1Player2_Fragment = PlayerActionFragment.newInstance(TEAM_1, PLAYER_2,
+                    tennisMatch.getTennisTeam1().getPlayer2Name());
+            PlayerActionFragment team2Player2_Fragment = PlayerActionFragment.newInstance(TEAM_2, PLAYER_2,
+                    tennisMatch.getTennisTeam2().getPlayer2Name());
 
             ft.add(R.id.activity_match_score_tracker_PLAYER_ACTION_BOX_TWO,
-                    team1Player2_ActionFragment);
+                    team1Player2_Fragment);
             ft.add(R.id.activity_match_score_tracker_PLAYER_ACTION_BOX_FOUR,
-                    team2Player2_ActionFragment);
+                    team2Player2_Fragment);
         }
 
         ft.commitNow();
@@ -256,84 +243,43 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
 
-        //size of this list should be equal to number of completed sets
-        List<String> prevSetResults = tennisMatch.getAllPreviousSetResults();
+        prepPreviousSetResultFragments(ft);
+        prepCurrentResultFragments(manager, ft);
 
-        if (prevSetResults.size() >= 1) {
-            String setOneResult = prevSetResults.get(0);
-            String[] arrSetOneResult = parseScore(setOneResult, "-");
-            String[] arrSetOneResultSimple = getSimpleSetResult(arrSetOneResult);
+        //Commit all changes!
+        ft.commitNow();
+    }
 
-            SetScoreBoxFragment setOneResult_Fragment =
-                    SetScoreBoxFragment.newInstance(arrSetOneResultSimple[0], arrSetOneResultSimple[1]);
+    /**
+     * Helper method -- prepares UI for fragments displaying the current Set and Game score.
+     * @param manager FragmentManager instance
+     * @param ft FragmentTransaction instance
+     * Removes the current Game Score Fragment if the match is over.
+     * This method does NOT commit the FragmentTransaction.
+     */
+    private void prepCurrentResultFragments(FragmentManager manager, FragmentTransaction ft) {
+        if (tennisMatch.isMatchFinished()) {
+            //If match is finished, remove the currSet and currGame fragment if they exist
+            Fragment currSet = manager.findFragmentByTag(CURRENT_SET_FRAGMENT_TAG);
+            Fragment currGame = manager.findFragmentByTag(CURRENT_GAME_FRAGMENT_TAG);
 
-            //(The score at index 0 will be for team1, and the score at index 1 will be for team2)
-            ft.replace(R.id.activity_match_score_tracker_SCOREBOX_ONE, setOneResult_Fragment, SET_ONE_FRAGMENT_TAG);
-        }
+            if(currSet != null) {ft.remove(currSet);}
+            if(currGame != null) {ft.remove(currGame);}
+        } else {
+            //Must display score for current set and game if match is not yet finished
 
-        if (prevSetResults.size() >= 2) {
-            String setTwoResult = prevSetResults.get(1);
-            String[] arrSetTwoResult = parseScore(setTwoResult, "-");
-            String[] arrSetTwoResultSimple = getSimpleSetResult(arrSetTwoResult);
+            //Get and parse currSetScore
+            String currSetScore = tennisMatch.getSetScore(0);
+            String[] arrCurrSetScore = parseScore(currSetScore, "-");
 
-            //(The score at index 0 will be for team1, and the score at index 1 will be for team2)
-            SetScoreBoxFragment setTwoResult_Fragment =
-                    SetScoreBoxFragment.newInstance(arrSetTwoResultSimple[0], arrSetTwoResultSimple[1]);
-
-            ft.replace(R.id.activity_match_score_tracker_SCOREBOX_TWO, setTwoResult_Fragment, SET_TWO_FRAGMENT_TAG);
-        }
-
-        if (prevSetResults.size() >= 3) {
-            String setThreeResult = prevSetResults.get(2);
-            String[] arrSetThreeResult = parseScore(setThreeResult, "-");
-            String[] arrSetThreeResultSimple = getSimpleSetResult(arrSetThreeResult);
-
-            //(The score at index 0 will be for team1, and the score at index 1 will be for team2)
-            SetScoreBoxFragment setThreeResult_Fragment =
-                    SetScoreBoxFragment.newInstance(arrSetThreeResultSimple[0], arrSetThreeResultSimple[1]);
-
-            ft.replace(R.id.activity_match_score_tracker_SCOREBOX_THREE, setThreeResult_Fragment, SET_THREE_FRAGMENT_TAG);
-        }
-
-        if (prevSetResults.size() >= 4) {
-            String setFourResult = prevSetResults.get(3);
-            String[] arrSetFourResult = parseScore(setFourResult, "-");
-            String[] arrSetFourResultSimple = getSimpleSetResult(arrSetFourResult);
-
-            //(The score at index 0 will be for team1, and the score at index 1 will be for team2)
-            SetScoreBoxFragment setFourResult_Fragment =
-                    SetScoreBoxFragment.newInstance(arrSetFourResultSimple[0], arrSetFourResultSimple[1]);
-
-            ft.replace(R.id.activity_match_score_tracker_SCOREBOX_FOUR, setFourResult_Fragment, SET_FOUR_FRAGMENT_TAG);
-        }
-
-        if (prevSetResults.size() >= 5) {
-            String setFiveResult = prevSetResults.get(4);
-            String[] arrSetFiveResult = parseScore(setFiveResult, "-");
-            String[] arrSetFiveResultSimple = getSimpleSetResult(arrSetFiveResult);
-
-            //(The score at index 0 will be for team1, and the score at index 1 will be for team2)
-            SetScoreBoxFragment setFiveResult_Fragment =
-                    SetScoreBoxFragment.newInstance(arrSetFiveResultSimple[0], arrSetFiveResultSimple[1]);
-
-            ft.replace(R.id.activity_match_score_tracker_SCOREBOX_FIVE, setFiveResult_Fragment, SET_FIVE_FRAGMENT_TAG);
-        }
-
-        //Must also display score for current set and game if match is not yet finished
-        if (!tennisMatch.isMatchFinished()) {
-
-            //Get and parse currentSetScore
-            String currentSetScore = tennisMatch.getSetScore(0);
-            String[] arrCurrentSetScore = parseScore(currentSetScore, "-");
-
-            //Get and parse currentGameScore
-            String currentGameScore = tennisMatch.getGameScore(0);
-            String[] arrCurrentGameScore = parseScore(currentGameScore, ":");
+            //Get and parse currGameScore
+            String currGameScore = tennisMatch.getGameScore(0);
+            String[] arrCurrGameScore = parseScore(currGameScore, ":");
 
             SetScoreBoxFragment currentSet_Fragment =
-                    SetScoreBoxFragment.newInstance(arrCurrentSetScore[0], arrCurrentSetScore[1]);
+                    SetScoreBoxFragment.newInstance(arrCurrSetScore[0], arrCurrSetScore[1]);
             GameScoreBoxFragment currentGame_Fragment =
-                    GameScoreBoxFragment.newInstance(arrCurrentGameScore[0], arrCurrentGameScore[1]);
+                    GameScoreBoxFragment.newInstance(arrCurrGameScore[0], arrCurrGameScore[1]);
 
 
             switch (tennisMatch.getCurrentSetNumber()) {
@@ -368,34 +314,90 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
                             currentGame_Fragment, CURRENT_GAME_FRAGMENT_TAG);
                     break;
             }
-        } else {
-            //If match is finished, remove the currSet and currGame fragment if they exist
-            Fragment currSet = manager.findFragmentByTag(CURRENT_SET_FRAGMENT_TAG);
-            Fragment currGame = manager.findFragmentByTag(CURRENT_GAME_FRAGMENT_TAG);
+        }
+    }
 
-            if(currSet != null) {
-                ft.remove(currSet);
-            }
-            if(currGame != null) {
-                ft.remove(currGame);
-            }
+    /**
+     * Helper method -- prepares UI for fragments displaying the previous set scores.
+     * @param ft FragmentTransaction instance
+     * This method does NOT commit the FragmentTransaction.
+     */
+    private void prepPreviousSetResultFragments(FragmentTransaction ft) {
+        //size of this list should be equal to number of completed sets
+        List<String> prevResults = tennisMatch.getAllPreviousSetResults();
+
+        if (prevResults.size() >= 1) {
+            String[] setOneResult = parseScore(prevResults.get(0), "-");
+            String[] setOneResultSimple = getSimpleSetResult(setOneResult);
+
+            SetScoreBoxFragment setOneResult_Frag =
+                    SetScoreBoxFragment.newInstance(setOneResultSimple[0], setOneResultSimple[1]);
+
+            //(The score at index 0 will be for team1, and the score at index 1 will be for team2)
+            ft.replace(R.id.activity_match_score_tracker_SCOREBOX_ONE,
+                    setOneResult_Frag, SET_ONE_FRAGMENT_TAG);
         }
 
-        //Commit all changes!
-        ft.commitNow();
+        if (prevResults.size() >= 2) {
+            String[] setTwoResult = parseScore(prevResults.get(1), "-");
+            String[] setTwoResultSimple = getSimpleSetResult(setTwoResult);
 
+            //(The score at index 0 will be for team1, and the score at index 1 will be for team2)
+            SetScoreBoxFragment setTwoResult_Frag =
+                    SetScoreBoxFragment.newInstance(setTwoResultSimple[0], setTwoResultSimple[1]);
+
+            ft.replace(R.id.activity_match_score_tracker_SCOREBOX_TWO,
+                    setTwoResult_Frag, SET_TWO_FRAGMENT_TAG);
+        }
+
+        if (prevResults.size() >= 3) {
+            String[] setThreeResult = parseScore(prevResults.get(2), "-");
+            String[] setThreeResultSimple = getSimpleSetResult(setThreeResult);
+
+            //(The score at index 0 will be for team1, and the score at index 1 will be for team2)
+            SetScoreBoxFragment setThreeResult_Frag =
+                    SetScoreBoxFragment.newInstance(setThreeResultSimple[0], setThreeResultSimple[1]);
+
+            ft.replace(R.id.activity_match_score_tracker_SCOREBOX_THREE,
+                    setThreeResult_Frag, SET_THREE_FRAGMENT_TAG);
+        }
+
+        if (prevResults.size() >= 4) {
+            String[] setFourResult = parseScore(prevResults.get(3), "-");
+            String[] setFourResultSimple = getSimpleSetResult(setFourResult);
+
+            //(The score at index 0 will be for team1, and the score at index 1 will be for team2)
+            SetScoreBoxFragment setFourResult_Frag =
+                    SetScoreBoxFragment.newInstance(setFourResultSimple[0], setFourResultSimple[1]);
+
+            ft.replace(R.id.activity_match_score_tracker_SCOREBOX_FOUR,
+                    setFourResult_Frag, SET_FOUR_FRAGMENT_TAG);
+        }
+
+        if (prevResults.size() >= 5) {
+            String[] setFiveResult = parseScore(prevResults.get(4), "-");
+            String[] setFiveResultSimple = getSimpleSetResult(setFiveResult);
+
+            //(The score at index 0 will be for team1, and the score at index 1 will be for team2)
+            SetScoreBoxFragment setFiveResult_Frag =
+                    SetScoreBoxFragment.newInstance(setFiveResultSimple[0], setFiveResultSimple[1]);
+
+            ft.replace(R.id.activity_match_score_tracker_SCOREBOX_FIVE,
+                    setFiveResult_Frag, SET_FIVE_FRAGMENT_TAG);
+        }
     }
 
     private void displayUnsavedQuitDialog() {
-        String returnMessage = "Return To Main Menu?\nAll Match Data Will Be Lost!";
+        String retMessage = "Return To Main Menu?\nAll Match Data Will Be Lost!";
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(returnMessage)
+        builder.setMessage(retMessage)
                 .setCancelable(true)
                 .setPositiveButton("Return To Main Menu", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //Go back to main activity
-                        Intent intent = new Intent(MatchScoreTrackerActivity.this, MainActivity.class);
+                        Intent intent = new Intent(MatchScoreTrackerActivity.this,
+                                MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }
@@ -476,7 +478,8 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
     /**
      * Helper method -- calls addPointForTeam for the opposing team
      *
-     * @param teamNumber either 1 or 2. Calls addPointForTeam for team2 if 1 is passed in, and vice versa.
+     * @param teamNumber must be either 1 or 2.
+     *                   Calls addPointForTeam for team2 if 1 is passed in, and vice versa.
      */
     private void addPointAgainstTeam(int teamNumber) {
         if (teamNumber == TEAM_1) {
@@ -493,25 +496,10 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
      * @param teamNumber either 1 to add a point for team1, or 2 to add a point for team2.
      */
     private void addPointForTeam(int teamNumber) {
-        /*
-        int completedSetsBefore = tennisMatch.getSetsCompleted();
-        int completedSetsAfter;
-
-         */
 
         //This will update the state of TennisMatch
         int winningTeam = tennisMatch.addPointForTeam(teamNumber);
 
-        /*
-        completedSetsAfter = tennisMatch.getSetsCompleted();
-
-        //Adjust the fragment positions in our scoreBox UI if necessary - ie. if we've completed a set.
-        if (completedSetsBefore != completedSetsAfter) {
-            updateScoreBoxFragments(completedSetsAfter);
-            updateCurrentSetTextView();
-        }
-
-         */
 
         //Updates the textView displaying the current set we're on
         updateCurrentSetTextView();
@@ -520,7 +508,6 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
 
         //If there is a winningTeam
         if (winningTeam > 0) {
-            //TODO: Some code for when the match is finished
             onMatchFinished(winningTeam);
         }
     }
@@ -553,6 +540,7 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
             addLossIntoDatabase(losingTeamPlayer2_ID);
         }
 
+        //Determine teamName for the winning team and losing team.
         winningTeam_TeamName = team1_WIN ?
                 tennisMatch.getTennisTeam1().getFullTeamName() : tennisMatch.getTennisTeam2().getFullTeamName();
         losingTeam_TeamName = team1_WIN ?
@@ -592,7 +580,8 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //Go back to main activity
-                        Intent intent = new Intent(MatchScoreTrackerActivity.this, MainActivity.class);
+                        Intent intent = new Intent(MatchScoreTrackerActivity.this,
+                                MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }

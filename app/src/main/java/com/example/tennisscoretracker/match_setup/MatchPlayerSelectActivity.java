@@ -107,41 +107,44 @@ public class MatchPlayerSelectActivity extends AppCompatActivity {
                     checkDuplicateSet.add(team2Player1);
                     checkDuplicateSet.add(team2Player2);
 
+                    //Check first that there are no duplicate player selections, if there are, don't begin activity
                     if(checkDuplicateSet.size() != 4) {
                         Toast.makeText(MatchPlayerSelectActivity.this,
                                 "All four players selected must be different players!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        //Begin MatchScoreTrackerActivity
-                        Intent intent = new Intent(
-                                MatchPlayerSelectActivity.this, MatchScoreTrackerActivity.class);
-                        intent.putExtra(IS_DOUBLES_EXTRA, isDoubles);
-                        intent.putExtra(NUM_SETS_EXTRA, numberOfSetsFragment.getNumberOfSets());
-                        intent.putExtra(TEAM_1_PLAYER_1_EXTRA, team1Player1);
-                        intent.putExtra(TEAM_1_PLAYER_2_EXTRA, team1Player2);
-                        intent.putExtra(TEAM_2_PLAYER_1_EXTRA, team2Player1);
-                        intent.putExtra(TEAM_2_PLAYER_2_EXTRA, team2Player2);
-                        startActivity(intent);
-
+                        return;
                     }
+
+                    //Begin MatchScoreTrackerActivity
+                    Intent intent = new Intent(
+                            MatchPlayerSelectActivity.this, MatchScoreTrackerActivity.class);
+                    intent.putExtra(IS_DOUBLES_EXTRA, isDoubles);
+                    intent.putExtra(NUM_SETS_EXTRA, numberOfSetsFragment.getNumberOfSets());
+                    intent.putExtra(TEAM_1_PLAYER_1_EXTRA, team1Player1);
+                    intent.putExtra(TEAM_1_PLAYER_2_EXTRA, team1Player2);
+                    intent.putExtra(TEAM_2_PLAYER_1_EXTRA, team2Player1);
+                    intent.putExtra(TEAM_2_PLAYER_2_EXTRA, team2Player2);
+                    startActivity(intent);
 
                 } else {
                     //if format is singles...
                     String player1 = singlesSetupFragment.getPlayer1Name();
                     String player2 = singlesSetupFragment.getPlayer2Name();
 
+                    //Check first that there are no duplicate player selections, if there are, don't begin activity
                     if(player1.equals(player2)) {
                         Toast.makeText(MatchPlayerSelectActivity.this,
                                 "The two players selected must be different players!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        //Begin MatchScoreTrackerActivity
-                        Intent intent = new Intent(
-                                MatchPlayerSelectActivity.this, MatchScoreTrackerActivity.class);
-                        intent.putExtra(IS_DOUBLES_EXTRA, isDoubles);
-                        intent.putExtra(NUM_SETS_EXTRA, numberOfSetsFragment.getNumberOfSets());
-                        intent.putExtra(TEAM_1_PLAYER_1_EXTRA, player1);
-                        intent.putExtra(TEAM_2_PLAYER_1_EXTRA, player2);
-                        startActivity(intent);
+                        return;
                     }
+
+                    //Begin MatchScoreTrackerActivity
+                    Intent intent = new Intent(
+                            MatchPlayerSelectActivity.this, MatchScoreTrackerActivity.class);
+                    intent.putExtra(IS_DOUBLES_EXTRA, isDoubles);
+                    intent.putExtra(NUM_SETS_EXTRA, numberOfSetsFragment.getNumberOfSets());
+                    intent.putExtra(TEAM_1_PLAYER_1_EXTRA, player1);
+                    intent.putExtra(TEAM_2_PLAYER_1_EXTRA, player2);
+                    startActivity(intent);
                 }
 
             }

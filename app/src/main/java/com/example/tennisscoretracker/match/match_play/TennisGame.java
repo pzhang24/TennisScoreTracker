@@ -1,7 +1,6 @@
 package com.example.tennisscoretracker.match.match_play;
 
 
-
 public class TennisGame {
 
     private boolean isTieBreak;
@@ -29,6 +28,7 @@ public class TennisGame {
     /**
      * Adds a point for the team passed in as a parameter, if the game is not yet over.
      * Checks before and after point is added for a winner, and returns the winning team number if there is one.
+     *
      * @param teamNumber Must be either 1 for team1, or 2 for team2.
      * @return Returns 1 if team1 wins, 2 if team2 wins, and 0 if no team has won yet.
      */
@@ -38,11 +38,11 @@ public class TennisGame {
             return beforeWinner;
         }
 
-        switch(teamNumber) {
-            case(TEAM1_NUMBER):
+        switch (teamNumber) {
+            case (TEAM1_NUMBER):
                 this.pointsWon_Team1++;
                 break;
-            case(TEAM2_NUMBER):
+            case (TEAM2_NUMBER):
                 this.pointsWon_Team2++;
                 break;
         }
@@ -52,6 +52,7 @@ public class TennisGame {
 
     /**
      * Check for a winner, and updates this.winningTeamNumber if a team has won.
+     *
      * @return Returns 1 if team1 has won, 2 if team2 has won, 0 if neither team has won.
      */
     private int checkForWinner() {
@@ -68,6 +69,7 @@ public class TennisGame {
 
     /**
      * Returns whether this game is a tieBreak game or not.
+     *
      * @return true if this game is a tieBreak game, and false if this game is not (ie. a normal game)
      */
     public boolean isTieBreak() {
@@ -76,6 +78,7 @@ public class TennisGame {
 
     /**
      * Returns the current score in the game for the requested team as a String
+     *
      * @param teamNumber Either 1 for team1 or 2 for team2. Pass in 0 for both teams score.
      * @return the current score.
      * If both team's score is requested, a String concatenating their scores (with a colon ":" in between) is returned.
@@ -86,16 +89,16 @@ public class TennisGame {
         String scoreTeam2;
 
         //Special case for tiebreak game
-        if(isTieBreak) {
+        if (isTieBreak) {
             scoreTeam1 = Integer.toString(pointsWon_Team1);
             scoreTeam2 = Integer.toString(pointsWon_Team2);
 
-            switch(teamNumber) {
-                case(0):
+            switch (teamNumber) {
+                case (0):
                     return scoreTeam1 + ":" + scoreTeam2;
-                case(1):
+                case (1):
                     return scoreTeam1;
-                case(2):
+                case (2):
                     return scoreTeam2;
                 default:
                     return null;
@@ -103,22 +106,18 @@ public class TennisGame {
         }
 
 
-        switch(pointsWon_Team1) {
-            case(0):
+        switch (pointsWon_Team1) {
+            case (0):
                 scoreTeam1 = "0";
                 break;
-            case(1):
+            case (1):
                 scoreTeam1 = "15";
                 break;
-            case(2):
+            case (2):
                 scoreTeam1 = "30";
                 break;
-            case(3):
-                if(pointsWon_Team2 == 4) {
-                    scoreTeam1 = "-";
-                } else {
-                    scoreTeam1 = "40";
-                }
+            case (3):
+                scoreTeam1 = (pointsWon_Team2 == 4) ? "-" : "40";
                 break;
             default:
                 if (pointsWon_Team1 > pointsWon_Team2) {
@@ -130,22 +129,18 @@ public class TennisGame {
                 }
         }
 
-        switch(pointsWon_Team2) {
-            case(0):
+        switch (pointsWon_Team2) {
+            case (0):
                 scoreTeam2 = "0";
                 break;
-            case(1):
+            case (1):
                 scoreTeam2 = "15";
                 break;
-            case(2):
+            case (2):
                 scoreTeam2 = "30";
                 break;
-            case(3):
-                if(pointsWon_Team1 == 4) {
-                    scoreTeam2 = "-";
-                } else {
-                    scoreTeam2 = "40";
-                }
+            case (3):
+                scoreTeam2 = (pointsWon_Team1) == 4 ? "-" : "40";
                 break;
             default:
                 if (pointsWon_Team2 > pointsWon_Team1) {
@@ -157,12 +152,13 @@ public class TennisGame {
                 }
         }
 
-        switch(teamNumber) {
-            case(0):
+        //Return the appropriate score
+        switch (teamNumber) {
+            case (0):
                 return scoreTeam1 + ":" + scoreTeam2;
-            case(1):
+            case (1):
                 return scoreTeam1;
-            case(2):
+            case (2):
                 return scoreTeam2;
             default:
                 return null;
@@ -173,11 +169,13 @@ public class TennisGame {
         return winningTeamNumber;
     }
 
+
     /**
      * Helper Function:
      * Check that a team is leading by two points or more
+     *
      * @param scoreToCheck the number of points won by the team to check
-     * @param otherScore the number of poitns won by the opposing team
+     * @param otherScore   the number of poitns won by the opposing team
      * @return true if the team we're checking is leading by two, and false otherwise.
      */
     private boolean upByTwo(int scoreToCheck, int otherScore) {

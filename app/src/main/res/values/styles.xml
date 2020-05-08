@@ -95,7 +95,7 @@
     </style>
 
     <style name="Fragment_player_select_Background">
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:background">@color/colorPrimarySlightlyTranslucent</item>
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
     </style>
@@ -140,4 +140,17 @@
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="Player_List_ListView">
+        <item name="android:background">@drawable/activity_player_records_listview_border</item>
+        <item name="android:divider">@color/colorPrimaryDark</item>
+        <item name="android:dividerHeight">2dp</item>
+        <item name="android:fadeScrollbars">false</item>
+        <item name="android:scrollbarAlwaysDrawVerticalTrack">true</item>
+        <item name="android:scrollbarSize">5dip</item>
+        <item name="android:scrollbarStyle">insideInset</item>
+        <item name="android:scrollbarThumbVertical">@drawable/custom_playerlist_scrollbar</item>
+        <item name="android:verticalScrollbarPosition">left</item>
+    </style>
+
 </resources>

@@ -2,6 +2,7 @@ package com.example.tennisscoretracker.match_setup;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,7 @@ public class NumberOfSetsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_number_of_sets, container, false);
 
         while(getActivity() == null) {
-            //Do nothing
+            Log.d(NumberOfSetsFragment.class.getSimpleName(), "Waiting for getActivity() != null");
         }
 
         setsSpinner = view.findViewById(R.id.fragment_number_of_sets_SPINNER);
@@ -44,7 +45,7 @@ public class NumberOfSetsFragment extends Fragment {
      * @param activity the Activity
      */
     private void setSetsSpinner(Spinner spinner, Activity activity) {
-        if(getActivity() != null) {
+        if (getActivity() != null) {
             ArrayAdapter<String> setListAdapter = new ArrayAdapter<String>(activity,
                     android.R.layout.simple_list_item_1, SET_OPTIONS_ARRAY);
 

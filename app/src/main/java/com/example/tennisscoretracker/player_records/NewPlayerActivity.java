@@ -61,39 +61,40 @@ public class NewPlayerActivity extends AppCompatActivity {
                             "Enter TennisPlayer Name",
                             Toast.LENGTH_LONG).show();
 
-                } else {
+                    //clear text in playerName editText widget
+                    //must be done even if editText box is all whitespace (must clear out whitespace!)
+                    editPlayerName.setText("");
+                    return;
+                }
 
+                try {
+                    boolean isInserted;
+                    isInserted = playerDB.insertNewPlayer
+                            (editPlayerName.getText().toString());
 
-                    try {
-                        boolean isInserted;
-                        isInserted = playerDB.insertNewPlayer
-                                (editPlayerName.getText().toString());
-
-                        if(isInserted) {
-                            String message = "New TennisPlayer Successfully Created";
-                            Toast.makeText(NewPlayerActivity.this, message, Toast.LENGTH_LONG).show();
-                        } else {
-                            String message = "Unable to Create New TennisPlayer";
-                            Toast.makeText(NewPlayerActivity.this, message, Toast.LENGTH_LONG).show();
-                        }
-
-                    } catch (PlayerNameAlreadyExistsException exception) {
-
-                        String message = exception.getMessage();
+                    if (isInserted) {
+                        String message = "New TennisPlayer Successfully Created";
                         Toast.makeText(NewPlayerActivity.this, message, Toast.LENGTH_LONG).show();
-
-                    } catch (TooManyPlayersException exception) {
-
-                        String message = exception.getMessage();
+                    } else {
+                        String message = "Unable to Create New TennisPlayer";
                         Toast.makeText(NewPlayerActivity.this, message, Toast.LENGTH_LONG).show();
                     }
 
+                } catch (PlayerNameAlreadyExistsException exception) {
+
+                    String message = exception.getMessage();
+                    Toast.makeText(NewPlayerActivity.this, message, Toast.LENGTH_LONG).show();
+
+                } catch (TooManyPlayersException exception) {
+
+                    String message = exception.getMessage();
+                    Toast.makeText(NewPlayerActivity.this, message, Toast.LENGTH_LONG).show();
+                } finally {
+
+                    editPlayerName.setText("");
+
                 }
 
-
-                //clear text in playerName editText widget
-                //must be done even if editText box is all whitespace (must clear out whitespace!)
-                editPlayerName.setText("");
             }
         });
     }

@@ -2,6 +2,7 @@ package com.example.tennisscoretracker.match_setup;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +17,14 @@ import androidx.fragment.app.Fragment;
 import com.example.tennisscoretracker.R;
 import com.example.tennisscoretracker.player_database.PlayerDBHelper;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class DoublesSetupFragment extends Fragment {
 
     private static final String TEAM_NAME_KEY = "team_name_key";
 
     //private String teamName;
-
-    private PlayerDBHelper playerDBHelper;
 
     private Spinner spinner1;
     private Spinner spinner2;
@@ -52,16 +54,21 @@ public class DoublesSetupFragment extends Fragment {
         teamNameTextView.setText(getArguments().getString(TEAM_NAME_KEY));
 
         while(getActivity() == null) {
-            //Do nothing
+            Log.d(DoublesSetupFragment.class.getSimpleName(), "Waiting for getActivity() != null");
         }
 
-        playerDBHelper = PlayerDBHelper.getInstance(getActivity());
+        PlayerDBHelper playerDBHelper = PlayerDBHelper.getInstance(getActivity());
 
         spinner1 = view.findViewById(R.id.fragment_singles_setup_Player_1_SPINNER);
         spinner2 = view.findViewById(R.id.fragment_singles_setup_Player_2_SPINNER);
 
-        setPlayerSpinner(spinner1, getActivity());
-        setPlayerSpinner(spinner2, getActivity());
+        ArrayList<String> playerList1 = playerDBHelper.getPlayerNamesList();
+        Collections.shuffle(playerList1);
+        ArrayList<String> playerList2 = playerDBHelper.getPlayerNamesList();
+        Collections.shuffle(playerList2);
+
+        setPlayerSpinner(spinner1, playerList1, getActivity());
+        setPlayerSpinner(spinner2, playerList2, getActivity());
         return view;
     }
 
@@ -71,9 +78,9 @@ public class DoublesSetupFragment extends Fragment {
      * @param spinner a Spinner
      * @param activity the Activity
      */
-    private void setPlayerSpinner(Spinner spinner, Activity activity) {
+    private void setPlayerSpinner(Spinner spinner, ArrayList<String> playerList, Activity activity) {
         ArrayAdapter<String> playerListAdapter = new ArrayAdapter<>(activity,
-                android.R.layout.simple_list_item_1, playerDBHelper.getPlayerNamesList());
+                android.R.layout.simple_list_item_1, playerList);
 
         playerListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
