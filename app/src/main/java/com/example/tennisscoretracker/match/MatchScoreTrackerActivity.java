@@ -243,8 +243,8 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
 
-        prepPreviousSetResultFragments(ft);
-        prepCurrentResultFragments(manager, ft);
+        prepPreviousScoreFragments(ft);
+        prepCurrentScoreFragments(manager, ft);
 
         //Commit all changes!
         ft.commitNow();
@@ -257,7 +257,7 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
      * Removes the current Game Score Fragment if the match is over.
      * This method does NOT commit the FragmentTransaction.
      */
-    private void prepCurrentResultFragments(FragmentManager manager, FragmentTransaction ft) {
+    private void prepCurrentScoreFragments(FragmentManager manager, FragmentTransaction ft) {
         if (tennisMatch.isMatchFinished()) {
             //If match is finished, remove the currSet and currGame fragment if they exist
             Fragment currSet = manager.findFragmentByTag(CURRENT_SET_FRAGMENT_TAG);
@@ -322,7 +322,7 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
      * @param ft FragmentTransaction instance
      * This method does NOT commit the FragmentTransaction.
      */
-    private void prepPreviousSetResultFragments(FragmentTransaction ft) {
+    private void prepPreviousScoreFragments(FragmentTransaction ft) {
         //size of this list should be equal to number of completed sets
         List<String> prevResults = tennisMatch.getAllPreviousSetResults();
 
