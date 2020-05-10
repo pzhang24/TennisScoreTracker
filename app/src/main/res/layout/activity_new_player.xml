@@ -9,41 +9,41 @@
 
     <include
         android:id="@+id/toolbar_new_player"
-        layout="@layout/toolbar_main"/>
+        layout="@layout/toolbar_main" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         style="@style/Layout_BackgroundStyle"
-        android:layout_height="wrap_content"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.75"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    <TextView
-        android:id="@+id/new_player_CREATE_PLAYER_TITLE"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        style="@style/NonMainActivityTitle_TextView"
-        android:text="@string/new_player_CREATE_PLAYER_TITLE"
-        />
+        app:layout_constraintWidth_percent="0.75"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
-    <TextView
-        android:id="@+id/new_player_PLAYER_NAME_TEXTVIEW"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/new_player_CREATE_PLAYER_TITLE"
-        app:layout_constraintTop_toBottomOf="@id/new_player_CREATE_PLAYER_TITLE"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:text="@string/new_player_PLAYER_NAME_TEXTVIEW"
-        style="@style/Regular_Heading_TextView"
-        />
+        <TextView
+            android:id="@+id/new_player_CREATE_PLAYER_TITLE"
+            style="@style/NonMainActivityTitle_TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/new_player_CREATE_PLAYER_TITLE"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/new_player_PLAYER_NAME_TEXTVIEW"
+            style="@style/Regular_Heading_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/new_player_PLAYER_NAME_TEXTVIEW"
+            app:layout_constraintStart_toStartOf="@id/new_player_CREATE_PLAYER_TITLE"
+            app:layout_constraintTop_toBottomOf="@id/new_player_CREATE_PLAYER_TITLE" />
 
         <EditText
             android:id="@+id/new_player_PLAYER_NAME_EDITTEXT"
@@ -54,22 +54,23 @@
             android:inputType="textPersonName"
             android:textColor="#ffffff"
             android:textColorHint="#ffffff"
+            android:textCursorDrawable="@drawable/activity_new_player_edittext_cursor"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="@id/new_player_PLAYER_NAME_TEXTVIEW"
             app:layout_constraintTop_toBottomOf="@id/new_player_PLAYER_NAME_TEXTVIEW" />
 
-    <Button
-        android:id="@+id/new_player_ADD_PLAYER_BUTTON"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/new_player_ADD_PLAYER_BUTTON"
-        style="@style/ActivityMatchPlayerSelect_Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_player_PLAYER_NAME_EDITTEXT"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        <Button
+            android:id="@+id/new_player_ADD_PLAYER_BUTTON"
+            style="@style/ActivityMatchPlayerSelect_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/new_player_ADD_PLAYER_BUTTON"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_player_PLAYER_NAME_EDITTEXT" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

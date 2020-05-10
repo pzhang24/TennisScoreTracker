@@ -5,7 +5,7 @@
     <string name="home_button_PLAYER_RECORDS">Player Records</string>
     <string name="home_button_QUIT">Quit</string>
     <string name="title_activity_player_records">PlayerRecordsActivity</string>
-    <string name="player_records_button_NEW_PLAYER">ADD NEW PLAYER</string>
+    <string name="player_records_button_NEW_PLAYER">CREATE NEW PLAYER</string>
     <string name="new_player_PLAYER_NAME_TEXTVIEW">FULL NAME</string>
     <string name="new_player_NAME_HINT">Enter Name Here</string>
     <string name="new_player_CREATE_PLAYER_TITLE">CREATE NEW PLAYER</string>

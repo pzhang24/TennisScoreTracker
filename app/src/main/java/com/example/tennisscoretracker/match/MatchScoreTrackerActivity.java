@@ -17,18 +17,18 @@ import com.example.tennisscoretracker.MainActivity;
 import com.example.tennisscoretracker.R;
 import com.example.tennisscoretracker.match.match_play.TennisMatch;
 import com.example.tennisscoretracker.match.match_team.TennisTeam;
-import com.example.tennisscoretracker.match.score_tracker_fragments.GameScoreBoxFragment;
-import com.example.tennisscoretracker.match.score_tracker_fragments.PlayerActionFragment;
-import com.example.tennisscoretracker.match.score_tracker_fragments.PlayerNameScoreBoxFragment;
-import com.example.tennisscoretracker.match.score_tracker_fragments.SetScoreBoxFragment;
+import com.example.tennisscoretracker.match.score_tracker_fragments.ActionFragment;
+import com.example.tennisscoretracker.match.score_tracker_fragments.GameFragment;
+import com.example.tennisscoretracker.match.score_tracker_fragments.PlayerNameFragment;
+import com.example.tennisscoretracker.match.score_tracker_fragments.SetFragment;
 import com.example.tennisscoretracker.match_setup.MatchPlayerSelectActivity;
 import com.example.tennisscoretracker.player_database.PlayerDBHelper;
 import com.example.tennisscoretracker.player_database.PlayerDoesNotExistException;
 
 import java.util.List;
 
-//TODO: implement PlayerActionFragment.PlayerActionListener
-public class MatchScoreTrackerActivity extends AppCompatActivity implements PlayerActionFragment.PlayerActionListener {
+//TODO: implement ActionFragment.PlayerActionListener
+public class MatchScoreTrackerActivity extends AppCompatActivity implements ActionFragment.PlayerActionListener {
 
     private static final int TEAM_1 = 1;
     private static final int TEAM_2 = 2;
@@ -42,7 +42,7 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
 
     //---------------------------//
 
-    //SetScoreBoxFragment fields
+    //SetFragment fields
 
     private static final String PLAYER_NAMES_FRAGMENT_TAG = "player_names_fragment_tag";
     private static final String SET_ONE_FRAGMENT_TAG = "set_one_fragment_tag";
@@ -184,11 +184,11 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
     }
 
     /**
-     * Configure the SetScoreBoxFragment associated with the player names
+     * Configure the SetFragment associated with the player names
      * - Displays the player/team names for both teams on the scoreboard UI
      */
     private void configurePlayerScoreBoxFragments() {
-        PlayerNameScoreBoxFragment playerNames_ScoreBoxFragment = PlayerNameScoreBoxFragment.newInstance(tennisMatch.getTennisTeam1().getFullTeamName(),
+        PlayerNameFragment playerNames_ScoreBoxFragment = PlayerNameFragment.newInstance(tennisMatch.getTennisTeam1().getFullTeamName(),
                 tennisMatch.getTennisTeam2().getFullTeamName());
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -205,9 +205,9 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
 
-        PlayerActionFragment team1Player1_Fragment = PlayerActionFragment.newInstance(TEAM_1, PLAYER_1,
+        ActionFragment team1Player1_Fragment = ActionFragment.newInstance(TEAM_1, PLAYER_1,
                 tennisMatch.getTennisTeam1().getPlayer1Name());
-        PlayerActionFragment team2Player1_Fragment = PlayerActionFragment.newInstance(TEAM_2, PLAYER_1,
+        ActionFragment team2Player1_Fragment = ActionFragment.newInstance(TEAM_2, PLAYER_1,
                 tennisMatch.getTennisTeam2().getPlayer1Name());
 
         //Box One is Top Left, Box Two is Bottom Left
@@ -221,9 +221,9 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
 
         //Also need to construct fragments for player2 on both teams if the match format is Doubles
         if (tennisMatch.isDoubles()) {
-            PlayerActionFragment team1Player2_Fragment = PlayerActionFragment.newInstance(TEAM_1, PLAYER_2,
+            ActionFragment team1Player2_Fragment = ActionFragment.newInstance(TEAM_1, PLAYER_2,
                     tennisMatch.getTennisTeam1().getPlayer2Name());
-            PlayerActionFragment team2Player2_Fragment = PlayerActionFragment.newInstance(TEAM_2, PLAYER_2,
+            ActionFragment team2Player2_Fragment = ActionFragment.newInstance(TEAM_2, PLAYER_2,
                     tennisMatch.getTennisTeam2().getPlayer2Name());
 
             ft.add(R.id.activity_match_score_tracker_PLAYER_ACTION_BOX_TWO,
@@ -276,10 +276,10 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
             String currGameScore = tennisMatch.getGameScore(0);
             String[] arrCurrGameScore = parseScore(currGameScore, ":");
 
-            SetScoreBoxFragment currentSet_Fragment =
-                    SetScoreBoxFragment.newInstance(arrCurrSetScore[0], arrCurrSetScore[1]);
-            GameScoreBoxFragment currentGame_Fragment =
-                    GameScoreBoxFragment.newInstance(arrCurrGameScore[0], arrCurrGameScore[1]);
+            SetFragment currentSet_Fragment =
+                    SetFragment.newInstance(arrCurrSetScore[0], arrCurrSetScore[1]);
+            GameFragment currentGame_Fragment =
+                    GameFragment.newInstance(arrCurrGameScore[0], arrCurrGameScore[1]);
 
 
             switch (tennisMatch.getCurrentSetNumber()) {
@@ -330,8 +330,8 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
             String[] setOneResult = parseScore(prevResults.get(0), "-");
             String[] setOneResultSimple = getSimpleSetResult(setOneResult);
 
-            SetScoreBoxFragment setOneResult_Frag =
-                    SetScoreBoxFragment.newInstance(setOneResultSimple[0], setOneResultSimple[1]);
+            SetFragment setOneResult_Frag =
+                    SetFragment.newInstance(setOneResultSimple[0], setOneResultSimple[1]);
 
             //(The score at index 0 will be for team1, and the score at index 1 will be for team2)
             ft.replace(R.id.activity_match_score_tracker_SCOREBOX_ONE,
@@ -343,8 +343,8 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
             String[] setTwoResultSimple = getSimpleSetResult(setTwoResult);
 
             //(The score at index 0 will be for team1, and the score at index 1 will be for team2)
-            SetScoreBoxFragment setTwoResult_Frag =
-                    SetScoreBoxFragment.newInstance(setTwoResultSimple[0], setTwoResultSimple[1]);
+            SetFragment setTwoResult_Frag =
+                    SetFragment.newInstance(setTwoResultSimple[0], setTwoResultSimple[1]);
 
             ft.replace(R.id.activity_match_score_tracker_SCOREBOX_TWO,
                     setTwoResult_Frag, SET_TWO_FRAGMENT_TAG);
@@ -355,8 +355,8 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
             String[] setThreeResultSimple = getSimpleSetResult(setThreeResult);
 
             //(The score at index 0 will be for team1, and the score at index 1 will be for team2)
-            SetScoreBoxFragment setThreeResult_Frag =
-                    SetScoreBoxFragment.newInstance(setThreeResultSimple[0], setThreeResultSimple[1]);
+            SetFragment setThreeResult_Frag =
+                    SetFragment.newInstance(setThreeResultSimple[0], setThreeResultSimple[1]);
 
             ft.replace(R.id.activity_match_score_tracker_SCOREBOX_THREE,
                     setThreeResult_Frag, SET_THREE_FRAGMENT_TAG);
@@ -367,8 +367,8 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
             String[] setFourResultSimple = getSimpleSetResult(setFourResult);
 
             //(The score at index 0 will be for team1, and the score at index 1 will be for team2)
-            SetScoreBoxFragment setFourResult_Frag =
-                    SetScoreBoxFragment.newInstance(setFourResultSimple[0], setFourResultSimple[1]);
+            SetFragment setFourResult_Frag =
+                    SetFragment.newInstance(setFourResultSimple[0], setFourResultSimple[1]);
 
             ft.replace(R.id.activity_match_score_tracker_SCOREBOX_FOUR,
                     setFourResult_Frag, SET_FOUR_FRAGMENT_TAG);
@@ -379,8 +379,8 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
             String[] setFiveResultSimple = getSimpleSetResult(setFiveResult);
 
             //(The score at index 0 will be for team1, and the score at index 1 will be for team2)
-            SetScoreBoxFragment setFiveResult_Frag =
-                    SetScoreBoxFragment.newInstance(setFiveResultSimple[0], setFiveResultSimple[1]);
+            SetFragment setFiveResult_Frag =
+                    SetFragment.newInstance(setFiveResultSimple[0], setFiveResultSimple[1]);
 
             ft.replace(R.id.activity_match_score_tracker_SCOREBOX_FIVE,
                     setFiveResult_Frag, SET_FIVE_FRAGMENT_TAG);
@@ -442,7 +442,7 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
 
     //----------------------------------------------------//
     //These methods implement the PlayerActionListener interface, executing when the user presses
-    //any button in PlayerActionFragment
+    //any button in ActionFragment
 
     //The following two methods should result in a point FOR the teamNumber passed in as a parameter
 
@@ -635,7 +635,8 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
         int winsBefore;
         try {
             winsBefore = playerDBHelper.getWinsFromID(playerID);
-            return playerDBHelper.updatePlayerWins(playerID, winsBefore + 1);
+            int winsAfter = winsBefore + 1;
+            return playerDBHelper.updatePlayerWins(playerID, winsAfter);
         } catch (PlayerDoesNotExistException e) {
             Log.d(MatchScoreTrackerActivity.class.getSimpleName(), "Could not get number of wins for playerID: " + playerID);
             return false;
@@ -652,7 +653,8 @@ public class MatchScoreTrackerActivity extends AppCompatActivity implements Play
         int lossesBefore;
         try {
             lossesBefore = playerDBHelper.getLossesFromID(playerID);
-            return playerDBHelper.updatePlayerLosses(playerID, lossesBefore + 1);
+            int lossesAfter = lossesBefore + 1;
+            return playerDBHelper.updatePlayerLosses(playerID, lossesAfter);
         } catch (PlayerDoesNotExistException e) {
             Log.d(MatchScoreTrackerActivity.class.getSimpleName(), "Could not get number of losses for playerID: " + playerID);
             return false;

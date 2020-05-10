@@ -52,8 +52,8 @@ public class MatchPlayerSelectActivity extends AppCompatActivity {
      * includes the player select fragment(s) and the number of sets select fragment
      */
     private void addUIFragments() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction ft = manager.beginTransaction();
 
         //Set up the player select fragment(s)
         if (isDoubles) {
@@ -65,20 +65,20 @@ public class MatchPlayerSelectActivity extends AppCompatActivity {
             doublesSetupFragmentTeam1 = new DoublesSetupFragment(TEAM_1_NAME);
             doublesSetupFragmentTeam2 = new DoublesSetupFragment(TEAM_2_NAME);
                */
-            fragmentTransaction.add(R.id.fragment_player_select_CONTAINER1, doublesSetupFragmentTeam1);
-            fragmentTransaction.add(R.id.fragment_player_select_CONTAINER2, doublesSetupFragmentTeam2);
+            ft.add(R.id.fragment_player_select_CONTAINER1, doublesSetupFragmentTeam1);
+            ft.add(R.id.fragment_player_select_CONTAINER2, doublesSetupFragmentTeam2);
 
         } else {
             singlesSetupFragment = new SinglesSetupFragment();
-            fragmentTransaction.add(R.id.fragment_player_select_CONTAINER1, singlesSetupFragment);
+            ft.add(R.id.fragment_player_select_CONTAINER1, singlesSetupFragment);
         }
 
 
         //Set up the number of sets selection fragment
         numberOfSetsFragment = new NumberOfSetsFragment();
-        fragmentTransaction.add(R.id.fragment_player_select_CONTAINER_SETS, numberOfSetsFragment);
+        ft.add(R.id.fragment_player_select_CONTAINER_SETS, numberOfSetsFragment);
 
-        fragmentTransaction.commit();
+        ft.commit();
     }
 
     /**
@@ -99,6 +99,14 @@ public class MatchPlayerSelectActivity extends AppCompatActivity {
                     String team1Player2 = doublesSetupFragmentTeam1.getPlayer2Name();
                     String team2Player1 = doublesSetupFragmentTeam2.getPlayer1Name();
                     String team2Player2 = doublesSetupFragmentTeam2.getPlayer2Name();
+
+
+                    if(team1Player1 == null || team1Player2 == null ||
+                            team2Player1 == null || team2Player2 == null) {
+                        Toast.makeText(MatchPlayerSelectActivity.this,
+                                "Go to Player Records to Create Players!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
                     Set<String> checkDuplicateSet = new HashSet<>();
 
@@ -129,6 +137,12 @@ public class MatchPlayerSelectActivity extends AppCompatActivity {
                     //if format is singles...
                     String player1 = singlesSetupFragment.getPlayer1Name();
                     String player2 = singlesSetupFragment.getPlayer2Name();
+
+                    if(player1 == null || player2 == null) {
+                        Toast.makeText(MatchPlayerSelectActivity.this,
+                                "Go to Player Records to Create Players!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
                     //Check first that there are no duplicate player selections, if there are, don't begin activity
                     if(player1.equals(player2)) {

@@ -52,13 +52,13 @@ public class NewPlayerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String playerName = editPlayerName.getText().toString();
+                String playerName = editPlayerName.getText().toString().trim();
 
-                if (playerName.trim().isEmpty()) {
+                if (playerName.isEmpty()) {
 
                     //Prompts user to enter a name if editText box is all whitespace
                     Toast.makeText(NewPlayerActivity.this,
-                            "Enter TennisPlayer Name",
+                            "Enter Player Name",
                             Toast.LENGTH_LONG).show();
 
                     //clear text in playerName editText widget
@@ -70,13 +70,14 @@ public class NewPlayerActivity extends AppCompatActivity {
                 try {
                     boolean isInserted;
                     isInserted = playerDB.insertNewPlayer
-                            (editPlayerName.getText().toString());
+                            (playerName);
 
                     if (isInserted) {
-                        String message = "New TennisPlayer Successfully Created";
+                        String message = "New Player Successfully Created: " +
+                                playerName;
                         Toast.makeText(NewPlayerActivity.this, message, Toast.LENGTH_LONG).show();
                     } else {
-                        String message = "Unable to Create New TennisPlayer";
+                        String message = "Unable to Create New Player!";
                         Toast.makeText(NewPlayerActivity.this, message, Toast.LENGTH_LONG).show();
                     }
 

@@ -15,14 +15,14 @@ import com.example.tennisscoretracker.R;
 /**
  * A Score Box with two TextViews, allowing you to store playerNames for two teams.
  */
-public class PlayerNameScoreBoxFragment extends Fragment {
+public class PlayerNameFragment extends Fragment {
 
     private static final String TOPTEXT_KEY = "top_text";
     private static final String BOTTOMTEXT_KEY = "bottom_text";
 
     //TODO: Add methods/fields to input a score into the fragment... DONE? NOT DONE :(((
-    public static PlayerNameScoreBoxFragment newInstance(String topText, String bottomText) {
-        PlayerNameScoreBoxFragment fragment = new PlayerNameScoreBoxFragment();
+    public static PlayerNameFragment newInstance(String topText, String bottomText) {
+        PlayerNameFragment fragment = new PlayerNameFragment();
         Bundle bundle = new Bundle();
         bundle.putString(TOPTEXT_KEY, topText);
         bundle.putString(BOTTOMTEXT_KEY, bottomText);
@@ -45,7 +45,7 @@ public class PlayerNameScoreBoxFragment extends Fragment {
 
 
     /**
-     * Changes the TextViews inside this SetScoreBoxFragment
+     * Changes the TextViews inside this SetFragment
      * @param topText text to set for top TextView
      * @param bottomText text to set for bottom TextView
      */

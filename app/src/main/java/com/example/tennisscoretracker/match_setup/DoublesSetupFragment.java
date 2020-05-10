@@ -87,12 +87,24 @@ public class DoublesSetupFragment extends Fragment {
         spinner.setAdapter(playerListAdapter);
     }
 
+    /**
+     * Gets the currently selected name in the spinner for player 1, if one exists
+     * @return the name of the player, or null if no items exist in spinner
+     */
     public String getPlayer1Name(){
-        return spinner1.getSelectedItem().toString();
+
+        return spinner1.getSelectedItem() == null ?
+                null : spinner1.getSelectedItem().toString();
     }
 
+
+    /**
+     * Gets the currently selected name in the spinner for player 2, if one exists
+     * @return the name of the player, or null if no items exist in spinner
+     */
     public String getPlayer2Name(){
-        return spinner2.getSelectedItem().toString();
+        return spinner2.getSelectedItem() == null ?
+                null : spinner2.getSelectedItem().toString();
     }
 
 }

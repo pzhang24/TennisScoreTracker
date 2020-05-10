@@ -113,7 +113,7 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = dbStaticInstance.getWritableDatabase();
 
         if(checkPlayerNameAlreadyExist(playerName)) {
-            throw new PlayerNameAlreadyExistsException("TennisPlayer Name Already Taken!");
+            throw new PlayerNameAlreadyExistsException("Player Name Already Taken!");
         } else if (getNumberOfPlayers() >= MAX_PLAYER_CAPACITY) {
             throw new TooManyPlayersException("Reached maximum limit of players! Limit = " +
                     MAX_PLAYER_CAPACITY);
@@ -214,7 +214,7 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
     public boolean updatePlayerName(int playerID, String newPlayerName) throws PlayerNameAlreadyExistsException {
         SQLiteDatabase db = dbStaticInstance.getWritableDatabase();
         if(checkPlayerNameAlreadyExist(newPlayerName)) {
-            throw new PlayerNameAlreadyExistsException("TennisPlayer name already exists!");
+            throw new PlayerNameAlreadyExistsException("Player name already exists!");
         }
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1, newPlayerName);

@@ -16,7 +16,7 @@ import com.example.tennisscoretracker.R;
 
 //TODO: initialize listener... DONE
 
-public class PlayerActionFragment extends Fragment {
+public class ActionFragment extends Fragment {
 
     private PlayerActionListener listener;
 
@@ -38,20 +38,20 @@ public class PlayerActionFragment extends Fragment {
     private Button forcedErrorButton;
     private Button unforcedErrorButton;
 
-    //Fragment ID Fields - the team and player for which this PlayerActionFragment is for
+    //Fragment ID Fields - the team and player for which this ActionFragment is for
     private int teamNumber;
     private int playerNumber;
 
 
     /**
-     * Factory method to instantiate a new PlayerActionFragment
+     * Factory method to instantiate a new ActionFragment
      * @param teamNumber The team number. (In the context of this app, either 1 for team1 or 2 for team2.)
      * @param playerNumber The player number. (In the context of this app, either 1 for player1 or 2 for player2.)
      * @param playerName
-     * @return new instance of PlayerActionFragment
+     * @return new instance of ActionFragment
      */
-    public static PlayerActionFragment newInstance(int teamNumber, int playerNumber, String playerName) {
-        PlayerActionFragment fragment = new PlayerActionFragment();
+    public static ActionFragment newInstance(int teamNumber, int playerNumber, String playerName) {
+        ActionFragment fragment = new ActionFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(TEAM_NUMBER_KEY, teamNumber);
         bundle.putInt(PLAYER_NUMBER_KEY, playerNumber);
