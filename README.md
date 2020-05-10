@@ -22,7 +22,8 @@ This was a very fruitful personal project and I gained a great deal of experienc
 - Writing SQL queries and implementing CRUD (Create, Read, Update, Delete) functionality for an SQLite Database. 
 
 ## Gallery
-<img src="images/tst_mainscreen.jpg" height="600"> <img src="images/tst_matchtypeselect.jpg" height="600"> <img src="images/tst_singlesselect2.jpg" height="600">  <img src="images/tst_doublesselect1.jpg" height="600"> <img src="images/tst_gameplay_rf_v_rn1.jpg" width="754"> <img src="images/tst_gameplay_rf_v_rn2.jpg" width="754"> <img src="images/tst_gameplay_rf_v_rn3.jpg" width="754"> <img src="images/tst_gameplay_vwam_v_cwnd1_.jpg" width="754"> <img src="images/tst_gameplay_vwam_v_cwnd2.jpg" width="754"> 
+<img src="images/tst_mainscreen.jpg" height="600"> <img src="images/tst_matchtypeselect.jpg" height="600"> <img src="images/tst_singlesselect2.jpg" height="600">  <img src="images/tst_doublesselect1.jpg" height="600"> 
+<img src="images/tst_gameplay_ms_v_sw_1.jpg" width="754"> <img src="images/tst_gameplay_ms_v_sw_2.jpg" width="754"> <img src="images/tst_gameplay_rf_v_rn1.jpg" width="754"> <img src="images/tst_gameplay_rf_v_rn2.jpg" width="754"> <img src="images/tst_gameplay_rf_v_rn3.jpg" width="754"> <img src="images/tst_gameplay_vwam_v_cwnd1_.jpg" width="754"> <img src="images/tst_gameplay_vwam_v_cwnd2.jpg" width="754"> 
 <br>
 <img src="images/tst_playerlist1.jpg" height="600"> <img src="images/tst_playerprofile_sw.jpg" height="600"> <img src="images/tst_playerprofile_rf.jpg" width="754">
 
